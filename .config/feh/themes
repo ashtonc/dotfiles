@@ -1,0 +1,6 @@
+# ----
+# Default behaviour
+# ----
+
+feh --auto-zoom --auto-rotate --scale-down --verbose
+
