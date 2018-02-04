@@ -1,0 +1,31 @@
+Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+       , borderColor = "black"
+       , border = TopB
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = TopW L 100
+       , commands = [ Run Weather "CYYC" ["-t","<station>: <tempC>C","-L","4","-H","20","--normal","green","--high","red","--low","lightblue"] 36000
+                    , Run Wireless "wlan0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run Wireless "wlan1" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run Cpu ["-L","5","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Com "uname" ["-s","-r"] "" 36000
+                    , Run Date "%A %Y %b %_d %H:%M:%S" "date" 10
+					, Run Battery   [ "--template" , "<left>% (<timeleft>)"
+									, "--Low"      , "20"
+					                , "--High"     , "70"
+					                , "--low"      , "red"
+					                , "--normal"   , "orange"
+					                , "--high"     , "green"
+					                , "--" 
+					                               , "-o", "Battery"
+					                               , "-O", "Power"
+					                               , "-i", "Charged"
+                    ] 50
+                    , Run StdinReader
+		]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% } <fc=#C9283E>%date%</fc> { %battery% | %CYYC%"
+}
