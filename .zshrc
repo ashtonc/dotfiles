@@ -1,15 +1,23 @@
-# Lines configured by zsh-newuser-install
+# History
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=1000
 setopt appendhistory autocd extendedglob nomatch notify
-unsetopt beep
-bindkey -v
-zstyle :compinstall filename '/home/ashton/.zshrc'
 
+# Disable beeping
+unsetopt beep
+
+# ?
+bindkey -v
+
+# Advanced command completion
 autoload -Uz compinit
 compinit
 
-# zsh syntax highlighting
-source
-/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Aliases
+## dotfiles
+alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
