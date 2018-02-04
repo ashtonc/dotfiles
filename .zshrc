@@ -22,6 +22,15 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 ## dotfiles
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-## ls
+## rebindings with arguments
 alias ls='ls -a  --color=auto'
+alias mkdir='mkdir -pv'
+
+## typos and ease of use
+alias cd..='cd ..'
+alias ..='cd ..'
+alias .='source ~/.zshrc'
+
+## changing programs
+alias top='htop'
 
