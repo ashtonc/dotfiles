@@ -19,11 +19,15 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # Aliases
 
+## Google cloud projects
+alias gdata='gcloud config set project ashtonc-data'
+alias ghome='gcloud config set project ashtonc-home'
+
 ## dotfiles
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 ## rebindings with arguments
-alias ls='ls -a  --color=auto'
+alias ls='ls --color=auto'
 alias mkdir='mkdir -pv'
 
 ## typos and ease of use
