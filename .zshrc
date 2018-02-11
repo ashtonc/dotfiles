@@ -18,6 +18,8 @@ compinit
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Aliases
+## Volume
+alias vol='pulseaudio-ctl'
 
 ## Google cloud projects
 alias gdata='gcloud config set project ashtonc-data'
