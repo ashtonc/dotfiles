@@ -18,6 +18,8 @@
  ;; If there is more than one, they won't work right.
  )
 
+(setq visible-bell 1)
+
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 (setq make-backup-files t               ; backup of a file the first time it is saved.
       backup-by-copying t               ; don't clobber symlinks
