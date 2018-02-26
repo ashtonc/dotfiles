@@ -41,8 +41,10 @@ alias .='source ~/.zshrc'
 alias top='htop'
 
 
-# The next line updates PATH for the Google Cloud SDK.
+# Gcloud
+
+## The next line updates PATH for the Google Cloud SDK.
 if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then source '/opt/google-cloud-sdk/path.zsh.inc'; fi
 
-# The next line enables shell command completion for gcloud.
+## The next line enables shell command completion for gcloud.
 if [ -f '/opt/google-cloud-sdk/completion.zsh.inc' ]; then source '/opt/google-cloud-sdk/completion.zsh.inc'; fi
