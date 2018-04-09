@@ -36,6 +36,9 @@ alias mkdir='mkdir -pv'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias .='source ~/.zshrc'
+alias tree='tree -C'
+alias tre='tree'
+alias tee='tree'
 
 ## changing programs
 alias top='htop'
