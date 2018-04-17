@@ -7,8 +7,8 @@ setopt appendhistory autocd extendedglob nomatch notify
 # Disable beeping
 unsetopt beep
 
-# ?
-bindkey -v
+# Change the line editor to emacs mode
+bindkey -e
 
 # Advanced command completion
 autoload -Uz compinit
