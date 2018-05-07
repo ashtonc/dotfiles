@@ -29,7 +29,7 @@ alias ghome='gcloud config set project ashtonc-home'
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 ## rebindings with arguments
-alias ls='ls --color=auto'
+alias ls='exa'
 alias mkdir='mkdir -pv'
 
 ## typos and ease of use
