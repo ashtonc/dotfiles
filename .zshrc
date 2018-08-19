@@ -1,4 +1,5 @@
 # History
+# Set screen brightness keys
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=1000
@@ -18,6 +19,9 @@ compinit
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Aliases
+## Backlight
+alias light='xbacklight'
+
 ## Volume
 alias vol='pulseaudio-ctl'
 
@@ -36,13 +40,12 @@ alias mkdir='mkdir -pv'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias .='source ~/.zshrc'
-alias tree='tree -C'
-alias tre='tree'
-alias tee='tree'
+alias tree='exa -T'
+alias tre='exa -T'
+alias tee='exa -T'
 
 ## changing programs
 alias top='htop'
-
 
 # Gcloud
 
