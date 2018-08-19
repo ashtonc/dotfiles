@@ -1,13 +1,23 @@
-Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
-       , borderColor = "black"
+Config {
+
+-- Colors from Sonph's OneHalf scheme
+--   Black:  #272B34
+--   White:  #DCDFE4
+--   Green:  #99C379
+--   Orange: #E5BF80
+--   Red:    #E16D73
+--   Blue:   #60AFFC
+
+         font = "xft:Bitstream Vera Sans Mono:size=10:bold:antialias=true"
+       , borderColor = "#272B34"
        , border = TopB
-       , bgColor = "black"
-       , fgColor = "grey"
+       , bgColor = "#272B34"
+       , fgColor = "#DCDFE4"
        , position = TopW L 100
-       , commands = [ Run Weather "CYYC" ["-t","<station>: <tempC>C","-L","4","-H","20","--normal","green","--high","red","--low","lightblue"] 36000
-                    , Run Wireless "wlan0" ["-L","0","-H","32","--normal","green","--high","red"] 10
-                    , Run Wireless "wlan1" ["-L","0","-H","32","--normal","green","--high","red"] 10
-                    , Run Cpu ["-L","5","-H","50","--normal","green","--high","red"] 10
+       , commands = [ Run Weather "CYYC" ["-t","<station>: <tempC>C","-L","4","-H","20","--normal","#99C379","--high","#E16D73","--low","#60AFFC"] 18000
+                    , Run Network "wlp4s0" ["-L","0","-H","32","--normal","#E5BF80","--high","#99C379","--low","#E16D73","-t","<tx>kb Up <rx>kb Down"] 10
+                    , Run Wireless "wlp4s0" ["-L","40","-H","70","--normal","#E5BF80","--high","#99C379","--low","#E16D73","-t","<essid> (<quality>%)"] 10
+                    , Run Cpu ["-L","5","-H","50","--normal","#99C379","--high","#E16D73"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run Com "uname" ["-s","-r"] "" 36000
@@ -15,9 +25,9 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
 					, Run Battery   [ "--template" , "<left>% (<timeleft>)"
 									, "--Low"      , "20"
 					                , "--High"     , "70"
-					                , "--low"      , "red"
-					                , "--normal"   , "orange"
-					                , "--high"     , "green"
+					                , "--low"      , "#E16D73"
+					                , "--normal"   , "#E5BF80"
+					                , "--high"     , "#99C379"
 					                , "--" 
 					                               , "-o", "Battery"
 					                               , "-O", "Power"
@@ -27,5 +37,5 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
 		]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% } <fc=#C9283E>%date%</fc> { %battery% | %CYYC%"
+       , template = "%StdinReader%> } <fc=#DCDFE4>%date%</fc> { %wlp4s0wi% | %battery%"
 }
