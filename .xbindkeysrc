@@ -1,0 +1,24 @@
+# Volume keys
+
+## Increase volume
+"pulseaudio-ctl up"
+   XF86AudioRaiseVolume
+
+## Decrease volume
+"pulseaudio-ctl down"
+   XF86AudioLowerVolume
+
+## Mute volume
+"pulseaudio-ctl mute"
+   XF86AudioMute
+
+# Brightness Keys
+
+## Increase brightness
+"xbacklight -inc 5"
+   XF86MonBrightnessUp
+
+## Decrease brightness
+"xbacklight -dec 5"
+   XF86MonBrightnessDown
+
