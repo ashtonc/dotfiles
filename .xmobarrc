@@ -37,5 +37,5 @@ Config {
 		]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader%> } <fc=#DCDFE4>%date%</fc> { %wlp4s0wi% | %battery%"
+       , template = "%StdinReader% } <fc=#DCDFE4>%date%</fc> { %wlp4s0wi% | %battery%"
 }

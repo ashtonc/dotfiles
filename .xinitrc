@@ -9,4 +9,7 @@ xmodmap -e 'keycode 107 = Caps_Lock'
 # Initialize xbindkeys
 xbindkeys &
 
+# Set backgrond
+xsetroot -solid "#272B34"
+
 exec xmonad
