@@ -8,7 +8,7 @@ Config {
 --   Red:    #E16D73
 --   Blue:   #60AFFC
 
-         font = "xft:Bitstream Vera Sans Mono:size=10:bold:antialias=true"
+         font = "xft:Noto Sans Mono:size=10:semibold:antialias=true"
        , borderColor = "#272B34"
        , border = TopB
        , bgColor = "#272B34"
@@ -16,13 +16,13 @@ Config {
        , position = TopW L 100
        , commands = [ Run Weather "CYYC" ["-t","<station>: <tempC>C","-L","4","-H","20","--normal","#99C379","--high","#E16D73","--low","#60AFFC"] 18000
                     , Run Network "wlp4s0" ["-L","0","-H","32","--normal","#E5BF80","--high","#99C379","--low","#E16D73","-t","<tx>kb Up <rx>kb Down"] 10
-                    , Run Wireless "wlp4s0" ["-L","40","-H","70","--normal","#E5BF80","--high","#99C379","--low","#E16D73","-t","<essid> (<quality>%)"] 10
+                    , Run Wireless "wlp4s0" ["-L","40","-H","70","--normal","#E5BF80","--high","#99C379","--low","#E16D73","-t","<essid>"] 10
                     , Run Cpu ["-L","5","-H","50","--normal","#99C379","--high","#E16D73"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run Com "uname" ["-s","-r"] "" 36000
                     , Run Date "%A %Y %b %_d %H:%M:%S" "date" 10
-					, Run Battery   [ "--template" , "<left>% (<timeleft>)"
+					, Run Battery   [ "--template" , "<left>%"
 									, "--Low"      , "20"
 					                , "--High"     , "70"
 					                , "--low"      , "#E16D73"
@@ -37,5 +37,5 @@ Config {
 		]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% } <fc=#DCDFE4>%date%</fc> { %wlp4s0wi% | %battery%"
+       , template = " %StdinReader% } <fc=#DCDFE4>%date%</fc> { %wlp4s0wi% | %battery% "
 }
