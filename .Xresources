@@ -6,5 +6,5 @@ xterm*utf8Title: true
 xterm*renderFont: true
 xterm*preeditType: Root
 xterm*xftAntialias: true
-xterm*faceName: Noto Sans Mono:size=10
+xterm*faceName: Noto Sans Mono:regular:size=10
 
