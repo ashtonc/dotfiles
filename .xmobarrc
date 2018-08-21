@@ -14,13 +14,15 @@ Config {
        , bgColor = "#272B34"
        , fgColor = "#DCDFE4"
        , position = TopW L 100
-       , commands = [ Run Weather "CYYC" ["-t","<station>: <tempC>C","-L","4","-H","20","--normal","#99C379","--high","#E16D73","--low","#60AFFC"] 18000
+       , commands = [ Run Weather "CYYC" ["-t","<tempC>C","-L","4","-H","20","--normal","#99C379","--high","#E16D73","--low","#60AFFC"] 18000
                     , Run Network "wlp4s0" ["-L","0","-H","32","--normal","#E5BF80","--high","#99C379","--low","#E16D73","-t","<tx>kb Up <rx>kb Down"] 10
                     , Run Wireless "wlp4s0" ["-L","40","-H","70","--normal","#E5BF80","--high","#99C379","--low","#E16D73","-t","<essid>"] 10
                     , Run Cpu ["-L","5","-H","50","--normal","#99C379","--high","#E16D73"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run Com "uname" ["-s","-r"] "" 36000
+                    , Run Com "/bin/bash" ["-c", "~/.xmonad/get-volume.sh"]  "myvolume" 10
+                    , Run Com "/bin/bash" ["-c", "~/.xmonad/get-brightness.sh"]  "mybrightness" 10
                     , Run Date "%A %Y %b %_d %H:%M:%S" "date" 10
 					, Run Battery   [ "--template" , "<left>%"
 									, "--Low"      , "20"
@@ -37,5 +39,5 @@ Config {
 		]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% } <fc=#DCDFE4>%date%</fc> { %wlp4s0wi% | %battery% "
+       , template = " %StdinReader% } <fc=#DCDFE4>%date%</fc> { Vol: %myvolume% | Light: %mybrightness% | Wifi: %wlp4s0wi% | Battery: %battery% | Temp: %CYYC% "
 }
