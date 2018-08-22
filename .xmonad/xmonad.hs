@@ -4,6 +4,9 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.Spacing (smartSpacing)
 
+-- Change the default terminal
+myTerminal           = "alacritty"
+
 -- Change the mod key to the windows (super) key
 myModMask            = mod4Mask
 
@@ -13,15 +16,15 @@ myLayoutHook         = smartSpacing 1 $ smartBorders (layoutHook defaultConfig)
 myBorderWidth        = 4
 
 -- Border colors
-myNormalBorderColor  = "#272B34"
-myFocusedBorderColor = "#60AFFC"
+myNormalBorderColor  = "#282C34"
+myFocusedBorderColor = "#61AFEF"
 
 -- Command to launch the bar
 myBar                = "xmobar"
 
 -- Custom pretty printer of xmonad log
-myPP                 = xmobarPP { ppCurrent = xmobarColor "#60AFFC" "" . wrap "" ""
-                                , ppTitle   = xmobarColor "#DCDFE4"  "" . shorten 64
+myPP                 = xmobarPP { ppCurrent = xmobarColor "#61AFEF" "" . wrap "" ""
+                                , ppTitle   = xmobarColor "#DFDFE4"  "" . shorten 64
                                 , ppSep             = " | "
                                 , ppLayout   = const ""
                                 }
@@ -31,6 +34,7 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 -- Configuration using changed defaults
 myConfig = defaultConfig { modMask            = myModMask
+                         , terminal           = myTerminal
                          , layoutHook         = myLayoutHook
                          , borderWidth        = myBorderWidth
                          , normalBorderColor  = myNormalBorderColor

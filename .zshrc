@@ -18,6 +18,9 @@ compinit
 # Syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Cabal
+PATH=$PATH:~/.cabal/bin
+
 # Aliases
 ## Backlight
 alias light='xbacklight'
