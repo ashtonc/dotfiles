@@ -61,5 +61,5 @@ Config {
 		               ]
        , sepChar     = "%"
        , alignSep    = "}{"
-       , template    = " %StdinReader% } <fc=#DFDFE4>%date%</fc> { Vol: %myvolume% | Light: %mybrightness% | Wifi: %wlp4s0wi% | Battery: %battery% | Temp: %CYYC% "
+       , template    = " %StdinReader% } <fc=#DFDFE4>%date%</fc> { Vol: %myvolume% | Light: %mybrightness% | Wifi: %wlp4s0wi% | Battery: %battery% | %CYYC% "
 }

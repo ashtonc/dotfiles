@@ -1,6 +1,8 @@
 #!/bin/bash
 
 precision=0
-echo $(xbacklight -get) | xargs printf "%.*f\n" $precision
+percentage=$(echo $(xbacklight -get) | xargs printf "%.*f\n" $precision)
+
+echo "$percentage%"
 
 exit 0
