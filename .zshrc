@@ -18,6 +18,10 @@ compinit
 # Syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Prompt
+autoload -Uz promptinit
+promptinit
+
 # Cabal
 PATH=$PATH:~/.cabal/bin
 

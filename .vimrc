@@ -10,8 +10,7 @@ Plugin 'sonph/onehalf', { 'rtp': 'vim/' }
 call vundle#end()
 filetype plugin indent on
 
-colorscheme onehalflight
-
+colorscheme onehalfdark
 
 " Line numbering
 set number
@@ -48,6 +47,4 @@ syntax enable
 " Swap file location
 set directory=$HOME/.vim/swapfiles//
 set backupdir=$HOME/.vim/backups//
-
-
 
