@@ -5,12 +5,13 @@ filetype off
 set rtp +=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'sonph/onehalf', { 'rtp': 'vim/' }
+Bundle 'sonph/onehalf', {'rtp': 'vim/'}
 
 call vundle#end()
 filetype plugin indent on
 
-colorscheme onehalfdark
+colorscheme onehalflight
+let g:airline_theme='onehalfdark'
 
 " Line numbering
 set number
@@ -43,6 +44,10 @@ set hlsearch
 
 " Color scheme
 syntax enable
+if &term =~# '^screen'
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 
 " Swap file location
 set directory=$HOME/.vim/swapfiles//

@@ -2,46 +2,30 @@ Config {
          font        = "xft:Noto Sans Mono:size=10:semibold:antialias=true"
        , position    = TopW L 100
        , border      = TopB
-       , borderColor = "#272B34"
+       , borderColor = "#282C34"
        , bgColor     = "#282C34"
        , fgColor     = "#DFDFE4"
-       , commands    = [ Run Weather  "CYYC"      [ "-t", "<tempC>℃"
-                                                  , "-L", "4"
-                                                  , "-H", "20"
-                                                  , "--normal", "#98C379"
-                                                  , "--high", "#E06C75"
-                                                  , "--low", "#61AFEF"
-                                                  ] 18000
+       , commands    = [ Run StdinReader
 
-                       , Run Network  "wlp4s0"    [ "-L","0","-H","32","--normal","#E5C07B","--high","#98C379","--low","#E06C75","-t","<tx>kb Up <rx>kb Down"
-                                                  ] 10
+                       , Run Date     "%A %Y %B %_d %H:%M:%S" "date" 10
 
-                       , Run Wireless "wlp4s0"    [ "-L","40","-H","70","--normal","#E5C07B","--high","#98C379","--low","#E06C75","-t","<essid>"
-                                                  ] 10
-
-                       , Run Cpu                  [ "-L","5","-H","50","--normal","#98C379","--high","#E06C75"
-                                                  ] 10
-
-                       , Run Memory               [ "-t","Mem: <usedratio>%"
-                                                  ] 10
-
-                       , Run Swap                 [
-                                                  ] 10
-
-                       , Run Com      "uname"     [ "-s","-r"
-                                                  ] "" 36000
-
-                       , Run Com      "/bin/bash" [ "-c", "~/.xmonad/get-volume.sh"
+                       , Run Com      "/bin/bash" [ "-c", "~/.xmonad/xmobar/scripts/get-volume.sh"
                                                   ]  "myvolume" 10
 
-                       , Run Com      "/bin/bash" [ "-c", "~/.xmonad/get-brightness.sh"
+                       , Run Com      "/bin/bash" [ "-c", "~/.xmonad/xmobar/scripts/get-brightness.sh"
                                                   ]  "mybrightness" 10
 
-                       , Run Date     "%A %Y %b %_d %H:%M:%S" "date" 10
+                       , Run Wireless "wlp4s0"    [ "--template" , "<essid>"
+                                                  , "-L"         , "40"
+                                                  , "-H"         , "70"
+                                                  , "--low"      , "#E06C75"
+                                                  , "--normal"   , "#E5C07B"
+                                                  , "--high"     , "#98C379"
+                                                  ] 50
 
                        , Run Battery              [ "--template" , "<left>%"
-                                                  , "--Low"      , "30"
-                                                  , "--High"     , "70"
+                                                  , "--L"        , "30"
+                                                  , "--H"        , "70"
                                                   , "--low"      , "#E06C75"
                                                   , "--normal"   , "#E5C07B"
                                                   , "--high"     , "#98C379"
@@ -51,9 +35,46 @@ Config {
                                                        , "-i", "Charged"
                                                   ] 50
 
-                       , Run StdinReader
-		               ]
+                       , Run Weather  "CYYC"      [ "--template" , "<tempC>℃"
+                                                  , "-L"         , "4"
+                                                  , "-H"         , "20"
+                                                  , "--normal"   , "#98C379"
+                                                  , "--high"     , "#E06C75"
+                                                  , "--low"      , "#61AFEF"
+                                                  ] 18000
+
+--                     , Run Network  "wlp4s0"    [ "--template" , "<tx>kb Up <rx>kb Down"
+--                                                , "-L"         , "0"
+--                                                , "-H"         , "32"
+--                                                , "--low"      , "#E06C75"
+--                                                , "--normal"   , "#E5C07B"
+--                                                , "--high"     , "#98C379"
+--                                                ] 10
+
+--                     , Run Cpu                  [ "-L", "5"
+--                                                , "-H", "50"
+--                                                , "--normal", "#98C379"
+--                                                , "--high", "#E06C75"
+--                                                ] 10
+
+--                     , Run Memory               [ "--template", "<usedratio>%"
+--                                                ] 10
+
+--                     , Run Swap                 [
+--                                                ] 10
+
+--                     , Run Com      "uname"     [ "-s", "-r"
+--                                                ] "" 36000
+		       ]
+
        , sepChar     = "%"
        , alignSep    = "}{"
-       , template    = " %StdinReader% } %date% { %myvolume% | %mybrightness% | %wlp4s0wi% | %battery% | %CYYC% "
+       , template    = " %StdinReader%\
+                      \} %date%\
+                      \{<action=pulseaudio-ctl mute> <icon=.xmonad/xmobar/icons/volume.xpm/> %myvolume% </action>\
+                      \|<action=~/.xmonad/xmobar/scripts/cycle-brightness.sh> <icon=.xmonad/xmobar/icons/brightness.xpm/> %mybrightness% </action>\
+                      \| <icon=.xmonad/xmobar/icons/wifi.xpm/> %wlp4s0wi% \
+                      \| <icon=.xmonad/xmobar/icons/battery.xpm/> %battery% \
+                      \| %CYYC% "
+--                    \| <icon=.xmonad/xmobar/icons/weather.xpm/> %CYYC% "
 }
