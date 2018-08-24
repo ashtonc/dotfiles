@@ -1,23 +1,11 @@
 Config {
-
--- # Sonph One Half Dark
---
--- Background: #282C34
--- Foreground: #DFDFE4
--- Red:        #E06C75
--- Green:      #98C379
--- Yellow:     #E5C07B
--- Blue:       #61AFEF
--- Magenta:    #C678DD
--- Cyan:       #56B6C2
-
          font        = "xft:Noto Sans Mono:size=10:semibold:antialias=true"
        , position    = TopW L 100
        , border      = TopB
        , borderColor = "#272B34"
        , bgColor     = "#282C34"
        , fgColor     = "#DFDFE4"
-       , commands    = [ Run Weather  "CYYC"      [ "-t", "<tempC>C"
+       , commands    = [ Run Weather  "CYYC"      [ "-t", "<tempC>℃"
                                                   , "-L", "4"
                                                   , "-H", "20"
                                                   , "--normal", "#98C379"
@@ -39,13 +27,18 @@ Config {
 
                        , Run Swap                 [
                                                   ] 10
+
                        , Run Com      "uname"     [ "-s","-r"
                                                   ] "" 36000
+
                        , Run Com      "/bin/bash" [ "-c", "~/.xmonad/get-volume.sh"
                                                   ]  "myvolume" 10
+
                        , Run Com      "/bin/bash" [ "-c", "~/.xmonad/get-brightness.sh"
                                                   ]  "mybrightness" 10
+
                        , Run Date     "%A %Y %b %_d %H:%M:%S" "date" 10
+
                        , Run Battery              [ "--template" , "<left>%"
                                                   , "--Low"      , "30"
                                                   , "--High"     , "70"
@@ -57,9 +50,10 @@ Config {
                                                        , "-O", "Power"
                                                        , "-i", "Charged"
                                                   ] 50
+
                        , Run StdinReader
 		               ]
        , sepChar     = "%"
        , alignSep    = "}{"
-       , template    = " %StdinReader% } <fc=#DFDFE4>%date%</fc> { Vol: %myvolume% | Light: %mybrightness% | Wifi: %wlp4s0wi% | Battery: %battery% | %CYYC% "
+       , template    = " %StdinReader% } %date% { %myvolume% | %mybrightness% | %wlp4s0wi% | %battery% | %CYYC% "
 }
