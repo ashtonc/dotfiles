@@ -1,6 +1,7 @@
 Config {
          font        = "xft:Noto Sans Mono:size=10:semibold:antialias=true"
-       , additionalFonts = [ "xft:Noto Sans Mono CJK JP:size=10:bold:antialias=true" ]
+       , additionalFonts = [ "xft:Noto Sans Mono CJK JP:size=10:bold:antialias=true"
+                           , "xft:Font Awesome 5 Pro Regular:size=10:antialias=true" ]
        , position    = TopW L 101
        , border      = TopB
        , borderColor = "#282C34"
@@ -10,14 +11,17 @@ Config {
 
                        , Run Date     "%A %Y %B %_d %H:%M:%S" "date" 10
 
-                       , Run Com      "/bin/bash" [ "-c", "~/.xmonad/xmobar/scripts/get-volume.sh"
-                                                  ]  "myvolume" 10
+                       , Run Com      "/bin/bash" [ "-c", "~/.xmonad/xmobar/scripts/get-battery.sh"
+                                                  ]  "mybattery" 50
 
                        , Run Com      "/bin/bash" [ "-c", "~/.xmonad/xmobar/scripts/get-brightness.sh"
                                                   ]  "mybrightness" 10
 
-                       , Run Com      "/bin/bash" [ "-c", "~/.xmonad/xmobar/scripts/count-updates.sh"
+                       , Run Com      "/bin/bash" [ "-c", "~/.xmonad/xmobar/scripts/get-updates.sh"
                                                   ]  "myupdates" 36000
+
+                       , Run Com      "/bin/bash" [ "-c", "~/.xmonad/xmobar/scripts/get-volume.sh"
+                                                  ]  "myvolume" 10
 
                        , Run Wireless "wlp4s0"    [ "--template" , "<essid>"
                                                   , "-L"         , "40"
@@ -27,17 +31,17 @@ Config {
                                                   , "--high"     , "#98C379"
                                                   ] 50
 
-                       , Run Battery              [ "--template" , "<left>%"
-                                                  , "--L"        , "30"
-                                                  , "--H"        , "70"
-                                                  , "--low"      , "#E06C75"
-                                                  , "--normal"   , "#E5C07B"
-                                                  , "--high"     , "#98C379"
-                                                  , "--" 
-                                                       , "-o", "Battery"
-                                                       , "-O", "Power"
-                                                       , "-i", "Charged"
-                                                  ] 50
+--                     , Run Battery              [ "--template" , "<left>%"
+--                                                , "--L"        , "30"
+--                                                , "--H"        , "70"
+--                                                , "--low"      , "#E06C75"
+--                                                , "--normal"   , "#E5C07B"
+--                                                , "--high"     , "#98C379"
+--                                                , "--" 
+--                                                     , "-o", "Battery"
+--                                                     , "-O", "Power"
+--                                                     , "-i", "Charged"
+--                                                ] 50
 
                        , Run Weather  "CYYC"      [ "--template" , "<tempC>℃"
                                                   , "-L"         , "4"
@@ -75,11 +79,10 @@ Config {
        , alignSep    = "}{"
        , template    = " %StdinReader% \
                       \} %date%\
-                      \{Updates: %myupdates% \
-                      \|<action=pulseaudio-ctl mute> <icon=.xmonad/xmobar/icons/volume.xpm/> %myvolume% </action>\
-                      \|<action=~/.xmonad/xmobar/scripts/cycle-brightness.sh> <icon=.xmonad/xmobar/icons/brightness.xpm/> %mybrightness% </action>\
-                      \| <icon=.xmonad/xmobar/icons/wifi.xpm/> %wlp4s0wi% \
-                      \| %CYYC% \
---                    \| <icon=.xmonad/xmobar/icons/weather.xpm/> %CYYC% 
-                      \| <icon=.xmonad/xmobar/icons/battery.xpm/> %battery% "
+                      \{<fn=2></fn> %myupdates% \
+                      \|<action=pulseaudio-ctl mute> %myvolume% </action>\
+                      \|<action=~/.xmonad/xmobar/scripts/cycle-brightness.sh> %mybrightness% </action>\
+                      \| <fn=2></fn> %wlp4s0wi% \
+                      \| <fn=2></fn> %CYYC% \
+                      \| %mybattery% "
 }
