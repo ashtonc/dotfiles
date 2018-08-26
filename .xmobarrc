@@ -1,6 +1,7 @@
 Config {
          font        = "xft:Noto Sans Mono:size=10:semibold:antialias=true"
-       , position    = TopW L 100
+       , additionalFonts = [ "xft:Noto Sans Mono CJK JP:size=11" ]
+       , position    = TopW L 101
        , border      = TopB
        , borderColor = "#282C34"
        , bgColor     = "#282C34"
@@ -14,6 +15,9 @@ Config {
 
                        , Run Com      "/bin/bash" [ "-c", "~/.xmonad/xmobar/scripts/get-brightness.sh"
                                                   ]  "mybrightness" 10
+
+                       , Run Com      "/bin/bash" [ "-c", "~/.xmonad/xmobar/scripts/count-updates.sh"
+                                                  ]  "myupdates" 36000
 
                        , Run Wireless "wlp4s0"    [ "--template" , "<essid>"
                                                   , "-L"         , "40"
@@ -69,12 +73,13 @@ Config {
 
        , sepChar     = "%"
        , alignSep    = "}{"
-       , template    = " %StdinReader%\
+       , template    = " %StdinReader% \
                       \} %date%\
-                      \{<action=pulseaudio-ctl mute> <icon=.xmonad/xmobar/icons/volume.xpm/> %myvolume% </action>\
+                      \{Updates: %myupdates% \
+                      \|<action=pulseaudio-ctl mute> <icon=.xmonad/xmobar/icons/volume.xpm/> %myvolume% </action>\
                       \|<action=~/.xmonad/xmobar/scripts/cycle-brightness.sh> <icon=.xmonad/xmobar/icons/brightness.xpm/> %mybrightness% </action>\
                       \| <icon=.xmonad/xmobar/icons/wifi.xpm/> %wlp4s0wi% \
-                      \| <icon=.xmonad/xmobar/icons/battery.xpm/> %battery% \
-                      \| %CYYC% "
---                    \| <icon=.xmonad/xmobar/icons/weather.xpm/> %CYYC% "
+                      \| %CYYC% \
+--                    \| <icon=.xmonad/xmobar/icons/weather.xpm/> %CYYC% 
+                      \| <icon=.xmonad/xmobar/icons/battery.xpm/> %battery% "
 }

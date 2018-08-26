@@ -12,4 +12,7 @@ xbindkeys &
 # Set backgrond
 xsetroot -solid "#282C34"
 
+# Remove duplicates from $PATH
+PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
+
 exec xmonad

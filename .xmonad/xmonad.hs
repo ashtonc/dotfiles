@@ -3,6 +3,7 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.Spacing (smartSpacing)
+import XMonad.Util.Run
 
 -- Change the default terminal
 myTerminal           = "alacritty"
@@ -23,17 +24,31 @@ myFocusedBorderColor = "#61AFEF"
 myBar                = "xmobar"
 
 -- Custom pretty printer of xmonad log
-myPP                 = xmobarPP { ppCurrent = xmobarColor "#61AFEF" "" . wrap "" ""
-                                , ppTitle   = xmobarColor "#DFDFE4"  "" . shorten 64
+myPP                 = xmobarPP { ppCurrent         = xmobarColor "#61AFEF" "" . wrap "" ""
+                                , ppHidden          = xmobarColor "#DFDFE4" "" . wrap "" ""
+                                , ppHiddenNoWindows = xmobarColor "#595D64" "" . wrap "" ""
+                                , ppTitle           = xmobarColor "#DFDFE4"  "" . shorten 64
                                 , ppSep             = " | "
-                                , ppLayout   = const ""
+                                , ppLayout          = const ""
                                 }
+
+-- Custom workspace numbers
+myWorkspaces         = [ "<fn=1>一</fn>"
+                       , "<fn=1>二</fn>"
+                       , "<fn=1>三</fn>"
+                       , "<fn=1>四</fn>"
+                       , "<fn=1>五</fn>"
+                       , "<fn=1>六</fn>"
+                       , "<fn=1>七</fn>"
+                       , "<fn=1>八</fn>"
+                       , "<fn=1>九</fn>" ]
 
 -- Key binding to toggle the gap for the bar
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 -- Configuration using changed defaults
 myConfig = defaultConfig { modMask            = myModMask
+                         , workspaces         = myWorkspaces
                          , terminal           = myTerminal
                          , layoutHook         = myLayoutHook
                          , borderWidth        = myBorderWidth
