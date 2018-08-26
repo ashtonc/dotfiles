@@ -1,6 +1,6 @@
 Config {
          font        = "xft:Noto Sans Mono:size=10:semibold:antialias=true"
-       , additionalFonts = [ "xft:Noto Sans Mono CJK JP:size=11" ]
+       , additionalFonts = [ "xft:Noto Sans Mono CJK JP:size=10:bold:antialias=true" ]
        , position    = TopW L 101
        , border      = TopB
        , borderColor = "#282C34"
