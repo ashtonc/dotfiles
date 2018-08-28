@@ -13,7 +13,7 @@ myModMask            = mod4Mask
 
 -- No borders on fullscreen content, borders around boxes, borders of width 4
 -- Small bug: with the smartSpacing I can still see the clock in the space it creates
-myLayoutHook         = smartSpacing 1 $ smartBorders (layoutHook defaultConfig)
+myLayoutHook         = smartSpacing 2 $ smartBorders (layoutHook defaultConfig)
 myBorderWidth        = 4
 
 -- Border colors
@@ -27,8 +27,8 @@ myBar                = "xmobar"
 myPP                 = xmobarPP { ppCurrent         = xmobarColor "#61AFEF" "" . wrap "" ""
                                 , ppHidden          = xmobarColor "#DFDFE4" "" . wrap "" ""
                                 , ppHiddenNoWindows = xmobarColor "#595D64" "" . wrap "" ""
-                                , ppTitle           = xmobarColor "#DFDFE4"  "" . shorten 64
-                                , ppSep             = " | "
+                                , ppTitle           = xmobarColor "#DFDFE4" "" . shorten 64
+                                , ppSep             = " <fc=#595D64>|</fc> "
                                 , ppLayout          = const ""
                                 }
 
@@ -43,9 +43,6 @@ myWorkspaces         = [ "<fn=1>一</fn>"
                        , "<fn=1>八</fn>"
                        , "<fn=1>九</fn>" ]
 
--- Key binding to toggle the gap for the bar
-toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
-
 -- Configuration using changed defaults
 myConfig = defaultConfig { modMask            = myModMask
                          , workspaces         = myWorkspaces
@@ -55,6 +52,9 @@ myConfig = defaultConfig { modMask            = myModMask
                          , normalBorderColor  = myNormalBorderColor
                          , focusedBorderColor = myFocusedBorderColor }
 
+-- Key binding to toggle the gap for the bar
+myKeys XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
+
 -- Run xmonad and xmobar
-main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
+main = xmonad =<< statusBar myBar myPP myKeys myConfig
 
