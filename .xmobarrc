@@ -1,7 +1,8 @@
 Config {
       font            = "xft:Noto Sans Mono:size=10:semibold:antialias=true:hinting=true"
     , additionalFonts = [ "xft:Noto Sans Mono CJK TC:size=10:bold:antialias=true:hinting=true"
-                        , "xft:Font Awesome 5 Pro Solid:size=10:antialias=true:hinting=true" ]
+                        , "xft:Font Awesome 5 Pro Solid:size=10:antialias=true:hinting=true"
+                        , "xft:Font Awesome 5 Brands:size=10:antialias=true:hinting=true" ]
     , position        = Top
     , bgColor         = "#282C34"
     , fgColor         = "#DFDFE4"
@@ -25,6 +26,9 @@ Config {
                                                    , "--normal"   , "#E5C07B"
                                                    , "--high"     , "#98C379"
                                                    ] 50
+
+                        , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/get-bluetooth.sh"
+                                                   ] "mybluetooth" 50
 
                         , Run Weather  "CYYC"      [ "--template" , "<fn=2></fn> <tempC>℃"
                                                    , "-L"         , "4"
@@ -78,6 +82,7 @@ Config {
                         \<action=pulseaudio-ctl mute> %myvolume% </action>\
                         \<fc=#595D64>|</fc><action=~/.xmonad/xmobar/scripts/cycle-brightness.sh> %mybrightness% </action>\
                         \<fc=#595D64>|</fc> %wlp4s0wi% \
+                        \%mybluetooth%\
                         \<fc=#595D64>|</fc> %CYYC% \
                         \<fc=#595D64>|</fc> %mybattery%\
                         \ "
