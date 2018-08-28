@@ -69,3 +69,13 @@ if [ -f '/opt/google-cloud-sdk/completion.zsh.inc' ]; then source '/opt/google-c
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
+# Fix delete/home/end/insert/pgup/pgdown keys
+
+bindkey "^[[5~" beginning-of-line
+bindkey "^[[6~" end-of-line
+bindkey "^[[1~" beginning-of-history
+bindkey "^[[4~" end-of-history
+bindkey "^[[7~" beginning-of-line
+bindkey "^[[3~" delete-char
+bindkey "^[[2~" quoted-insert
+

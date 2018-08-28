@@ -53,3 +53,10 @@ endif
 set directory=$HOME/.vim/swapfiles//
 set backupdir=$HOME/.vim/backups//
 
+" Disable ctrl+space
+imap <Nul> <Space>
+map  <Nul> <Nop>
+vmap <Nul> <Nop>
+cmap <Nul> <Nop>
+nmap <Nul> <Nop>
+
