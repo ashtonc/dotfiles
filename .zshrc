@@ -25,6 +25,9 @@ promptinit
 # Cabal
 PATH=$PATH:~/.cabal/bin
 
+# Config scripts
+PATH=$PATH:~/.config/bin
+
 # Aliases
 ## Backlight
 alias light='xbacklight'
@@ -63,7 +66,6 @@ if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then source '/opt/google-cloud-s
 if [ -f '/opt/google-cloud-sdk/completion.zsh.inc' ]; then source '/opt/google-cloud-sdk/completion.zsh.inc'; fi
 
 # fzf
-
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 

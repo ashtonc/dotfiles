@@ -1,4 +1,5 @@
 #!/bin/bash
+# Remaps the buttons on my ELECOM Huge
 
 SEARCH="ELECOM TrackBall Mouse HUGE TrackBall"
 

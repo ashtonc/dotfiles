@@ -12,9 +12,6 @@ xbindkeys &
 # Set backgrond
 xsetroot -solid "#282C34"
 
-# Remove duplicates from $PATH --> move to maintenance scripts
-PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
-
 # Start Dropbox
 killall dropbox
 dropbox &
