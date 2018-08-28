@@ -22,3 +22,17 @@
 "xbacklight -dec 5"
    XF86MonBrightnessDown
 
+# Extra keys
+
+## Tools (F9)
+"alacritty"
+   XF86Tools
+
+## Keyboard (F11)
+"google-chrome-stable http://mail.ashtonc.ca"
+   XF86Mail
+
+## Star (F12)
+"google-chrome-stable"
+   XF86HomePage
+
