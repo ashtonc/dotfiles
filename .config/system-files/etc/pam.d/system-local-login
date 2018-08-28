@@ -1,9 +1,9 @@
 #%PAM-1.0
 
-# Fingerprint
+## Fingerprint
 auth      sufficient  pam_fprintd.so
 
-# Original
+## Original
 auth      include     system-login
 account   include     system-login
 password  include     system-login
