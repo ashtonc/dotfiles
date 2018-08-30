@@ -1,9 +1,46 @@
 -- Imports
 import XMonad
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders (smartBorders)
-import XMonad.Layout.Spacing (smartSpacing)
+import XMonad.Layout.Spacing
+import XMonad.Util.EZConfig
 import XMonad.Util.Run
+
+-- Start xmonad with xmobar
+main = do
+    xmobar <- spawnPipe myBar
+
+    xmonad
+        $ docks
+        $ defaultConfig
+            { modMask            = myModMask
+            , workspaces         = myWorkspaces
+            , terminal           = myTerminal
+            , borderWidth        = myBorderWidth
+            , normalBorderColor  = myNormalBorderColor
+            , focusedBorderColor = myFocusedBorderColor
+            , layoutHook         = myLayoutHook
+            , logHook            = myLogHook xmobar
+            , handleEventHook    = fullscreenEventHook
+            , manageHook         = fullscreenManageHook
+            } `additionalKeys`     myKeys
+
+-- Log hook, customize the look of xmobar
+myLogHook xmobar = do
+    dynamicLogWithPP $ def
+        { ppCurrent         = xmobarColor "#61AFEF" "" . wrap "" ""
+        , ppHidden          = xmobarColor "#DFDFE4" "" . wrap "" ""
+        , ppHiddenNoWindows = xmobarColor "#595D64" "" . wrap "" ""
+        , ppTitle           = xmobarColor "#DFDFE4" "" . shorten 64
+        , ppSep             = " <fc=#595D64>|</fc> "
+        , ppLayout          = const ""
+        , ppOutput          = hPutStrLn xmobar
+        }
+ 
+-- Command to launch  xmobar
+myBar                = "xmobar"
 
 -- Change the default terminal
 myTerminal           = "alacritty"
@@ -12,25 +49,18 @@ myTerminal           = "alacritty"
 myModMask            = mod4Mask
 
 -- No borders on fullscreen content, borders around boxes, borders of width 4
--- Small bug: with the smartSpacing I can still see the clock in the space it creates
-myLayoutHook         = smartSpacing 2 $ smartBorders (layoutHook defaultConfig)
-myBorderWidth        = 4
+myLayoutHook         = avoidStruts
+                       $ spacingRaw True (myWindowSpacing) True (myWindowSpacing) True
+                       $ smartBorders
+--                       $ fullscreenFloat
+                       $ layoutHook defaultConfig
 
--- Border colors
+-- Border aesthetics
 myNormalBorderColor  = "#282C34"
 myFocusedBorderColor = "#61AFEF"
 
--- Command to launch the bar
-myBar                = "xmobar"
-
--- Custom pretty printer of xmonad log
-myPP                 = xmobarPP { ppCurrent         = xmobarColor "#61AFEF" "" . wrap "" ""
-                                , ppHidden          = xmobarColor "#DFDFE4" "" . wrap "" ""
-                                , ppHiddenNoWindows = xmobarColor "#595D64" "" . wrap "" ""
-                                , ppTitle           = xmobarColor "#DFDFE4" "" . shorten 64
-                                , ppSep             = " <fc=#595D64>|</fc> "
-                                , ppLayout          = const ""
-                                }
+myWindowSpacing      = Border 4 4 4 4
+myBorderWidth        = 4
 
 -- Custom workspace numbers
 myWorkspaces         = [ "<fn=1>一</fn>"
@@ -43,18 +73,6 @@ myWorkspaces         = [ "<fn=1>一</fn>"
                        , "<fn=1>八</fn>"
                        , "<fn=1>九</fn>" ]
 
--- Configuration using changed defaults
-myConfig = defaultConfig { modMask            = myModMask
-                         , workspaces         = myWorkspaces
-                         , terminal           = myTerminal
-                         , layoutHook         = myLayoutHook
-                         , borderWidth        = myBorderWidth
-                         , normalBorderColor  = myNormalBorderColor
-                         , focusedBorderColor = myFocusedBorderColor }
-
 -- Key binding to toggle the gap for the bar
-myKeys XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
-
--- Run xmonad and xmobar
-main = xmonad =<< statusBar myBar myPP myKeys myConfig
+myKeys               = [ ((myModMask, xK_b), sendMessage ToggleStruts) ]
 
