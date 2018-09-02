@@ -2,7 +2,6 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
-import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.Spacing
 import XMonad.Util.EZConfig
@@ -23,8 +22,6 @@ main = do
             , focusedBorderColor = myFocusedBorderColor
             , layoutHook         = myLayoutHook
             , logHook            = myLogHook xmobar
-            , handleEventHook    = fullscreenEventHook
-            , manageHook         = fullscreenManageHook
             } `additionalKeys`     myKeys
 
 -- Log hook, customize the look of xmobar
@@ -40,7 +37,7 @@ myLogHook xmobar = do
         }
  
 -- Command to launch  xmobar
-myBar                = "xmobar"
+myBar                = "xmobar /home/ashton/.xmonad/.xmobarrc"
 
 -- Change the default terminal
 myTerminal           = "alacritty"
@@ -52,7 +49,6 @@ myModMask            = mod4Mask
 myLayoutHook         = avoidStruts
                        $ spacingRaw True (myWindowSpacing) True (myWindowSpacing) True
                        $ smartBorders
---                       $ fullscreenFloat
                        $ layoutHook defaultConfig
 
 -- Border aesthetics

@@ -8,7 +8,7 @@ Config {
     , fgColor         = "#DFDFE4"
     , commands        = [ Run StdinReader
 
-                        , Run Date     "%A %Y %B %_d %H:%M:%S" "date" 10
+                        , Run Date     "%A %Y %b %d %H:%M:%S" "date" 10
 
                         , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/get-updates.sh"
                                                    ] "myupdates" 36000
