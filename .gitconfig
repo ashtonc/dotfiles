@@ -1,3 +1,5 @@
 [user]
 	email = ashton@ashtonc.ca
 	name = Ashton Charbonneau
+[core]
+	editor = vim

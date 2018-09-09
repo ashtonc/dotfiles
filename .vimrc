@@ -60,3 +60,10 @@ vmap <Nul> <Nop>
 cmap <Nul> <Nop>
 nmap <Nul> <Nop>
 
+" Disable PageUp and PageDown
+nnoremap <PageUp> <Nop>
+vnoremap <PageUp> <Nop>
+inoremap <PageUp> <Nop>
+nnoremap <PageDown> <Nop>
+vnoremap <PageDown> <Nop>
+inoremap <PageDown> <Nop>
