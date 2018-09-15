@@ -6,7 +6,6 @@ android-tools
 android-udev
 anki
 autoconf
-autofs
 automake
 bash
 bash-completion
@@ -126,6 +125,7 @@ procps-ng
 psmisc
 pulseaudio
 pulseaudio-ctl
+pv
 python-wxpython
 python2-wxpython3
 ranger
