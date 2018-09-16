@@ -136,6 +136,7 @@ s-nail
 sed
 shadow
 shfmt
+sshfs
 steghide
 strace
 sudo
