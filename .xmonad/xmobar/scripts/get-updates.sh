@@ -10,7 +10,7 @@ else
     count=`echo "$list" | wc -l`
 fi
 
-echo "<fn=2></fn> $count <fc=#595D64>|</fc>"
+echo " <fn=2></fn> $count <fc=#595D64>|</fc>"
 
 exit 0
 
