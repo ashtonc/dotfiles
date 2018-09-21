@@ -10,6 +10,9 @@ Config {
 
                         , Run Date     "%A %Y %b %d %H:%M:%S" "date" 10
 
+                        , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/gpmdp-control.sh bar"
+                                                   ] "mymusic" 15
+
                         , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/get-updates.sh"
                                                    ] "myupdates" 36000
 
@@ -81,6 +84,7 @@ Config {
                         \}\
                         \%date%\
                         \{\
+                        \%mymusic%\
                         \%myupdates%\
                         \<action=pulseaudio-ctl mute> %myvolume% </action>\
                         \<fc=#595D64>|</fc><action=~/.xmonad/xmobar/scripts/cycle-brightness.sh> %mybrightness% </action>\

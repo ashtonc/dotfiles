@@ -72,8 +72,10 @@ myWorkspaces         = [ "<fn=1>一</fn>"
 
 -- Key binding to toggle the gap for the bar
 myKeys               = [ ((myModMask, xK_b    ), sendMessage ToggleStruts)
-                       , ((myModMask, xK_z    ), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh pauseplay")
-                       , ((myModMask, xK_Right), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh next")
-                       , ((myModMask, xK_Left ), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh previous")
+                       , ((myModMask, xK_z    ), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do pauseplay")
+                       , ((myModMask, xK_Up   ), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do pauseplay")
+                       , ((myModMask, xK_Down ), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do stop")
+                       , ((myModMask, xK_Right), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do next")
+                       , ((myModMask, xK_Left ), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do previous")
                        ]
 
