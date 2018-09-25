@@ -29,6 +29,7 @@ docker
 dropbox
 e2fsprogs
 emacs
+enca
 evtest
 exa
 fakeroot
