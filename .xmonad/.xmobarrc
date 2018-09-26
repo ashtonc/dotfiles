@@ -11,16 +11,16 @@ Config {
                         , Run Date     "%A %Y %b %d %H:%M:%S" "date" 10
 
                         , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/gpmdp-control.sh bar"
-                                                   ] "mymusic" 15
+                                                   ] "mymusic" 30
 
                         , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/get-updates.sh"
-                                                   ] "myupdates" 36000
+                                                   ] "myupdates" 18000
 
                         , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/get-volume.sh"
-                                                   ] "myvolume" 10
+                                                   ] "myvolume" 20
 
                         , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/get-brightness.sh"
-                                                   ] "mybrightness" 10
+                                                   ] "mybrightness" 20
 
                         , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/get-wifi.sh"
                                                    ] "mywifi" 50
@@ -45,7 +45,7 @@ Config {
                                                    ] 18000
 
                         , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/get-battery.sh"
-                                                   ] "mybattery" 50
+                                                   ] "mybattery" 100
 
 --                      , Run Battery              [ "--template" , "<left>%"
 --                                                 , "--L"        , "30"

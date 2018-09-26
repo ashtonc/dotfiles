@@ -13,6 +13,7 @@ battery1percent=`echo "$info" | grep 'Battery 1' | grep -v 'capacity' | awk '{pr
 
 let totalcharge="(($battery0percent * battery0capacity / 100) + ($battery1percent * battery1capacity / 100))"
 let percentage="100 * $totalcharge / $totalcapacity"
+powerdraw=$(bc <<< "scale=1; $(cat /sys/class/power_supply/BAT1/power_now)/1000000")
 
 green="#98C379"
 orange="#E5C07B"
@@ -32,15 +33,15 @@ if [ "$charging" = "Charging" ]; then
 	fi
 else
 	if [ "$percentage" -ge 0 -a "$percentage" -le 20 ]; then
-		echo "<fn=2></fn> <fc=$red>$percentage</fc>%"
+		echo "<fn=2></fn> <fc=$red>$percentage</fc>% (${powerdraw}W)"
 	elif [ "$percentage" -ge 21 -a "$percentage" -le 40 ]; then
-		echo "<fn=2></fn> <fc=$red>$percentage</fc>%"
+		echo "<fn=2></fn> <fc=$red>$percentage</fc>% (${powerdraw}W)"
 	elif [ "$percentage" -ge 41 -a "$percentage" -le 60 ]; then
-		echo "<fn=2></fn> <fc=$orange>$percentage</fc>%"
+		echo "<fn=2></fn> <fc=$orange>$percentage</fc>% (${powerdraw}W)"
 	elif [ "$percentage" -ge 61 -a "$percentage" -le 80 ]; then
-		echo "<fn=2></fn> <fc=$orange>$percentage</fc>%"
+		echo "<fn=2></fn> <fc=$orange>$percentage</fc>% (${powerdraw}W)"
 	else
-		echo "<fn=2></fn> <fc=$green>$percentage</fc>%"
+		echo "<fn=2></fn> <fc=$green>$percentage</fc>% (${powerdraw}W)"
 	fi
 fi
 
