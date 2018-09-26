@@ -30,6 +30,7 @@ dropbox
 e2fsprogs
 emacs
 enca
+ethtool
 evtest
 exa
 fakeroot
@@ -137,6 +138,7 @@ s-nail
 sed
 shadow
 shfmt
+smartmontools
 sshfs
 steghide
 strace
