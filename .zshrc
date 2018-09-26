@@ -1,8 +1,11 @@
+# Prompt
+PROMPT='%~ | '
+
 # History
 # Set screen brightness keys
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=1000
+HISTSIZE=100000
+SAVEHIST=10000
 setopt appendhistory autocd extendedglob nomatch notify
 
 # Disable beeping
