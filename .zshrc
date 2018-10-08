@@ -1,5 +1,8 @@
 # Prompt
-PROMPT='%~ | '
+PROMPT='%~ %B|%b '
+EDITOR='vim'
+VISUAL=$EDITOR
+PAGER='less'
 
 # History
 # Set screen brightness keys

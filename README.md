@@ -35,21 +35,18 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 
 - libinput gestures
 - color scheme script to prevent rewriting it
-- current music in xmobar
 - xmobar weather location change script
 - xmonad fullscreen support (http://hackage.haskell.org/package/xmonad-contrib-0.14/docs/XMonad-Layout-Fullscreen.html)
-- xmonad date format??
 - dynamic workspaces for xmonad?
 - more (fewer?) xmonad layouts
 - xmonad scratchpad (maybe)
 - use emacs more
-- better org more integrations
+- better org mode integrations
 - tmux design changes
 - tmux color scheme
-- remap pgup and pgdown in vim, they're annoying
 - full disk encryption, LUKS, LVM
 - vim color scheme fix
-- reformat anki decks as json and script them...
+- reformat anki decks as json (ankidm/crowdanki) and script them...
 - think of a better remap for the keyboard thing at F11 and tools at F9
 - learn to use ranger
 - set up rofi
@@ -61,12 +58,11 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 - keep up to date with the fingerprint validity90 stuff
 - yubikey setup
 - gpgcard setup
-- see if xresources is useful for anything
-- minor xterm config (backup)
+- see if xresources is useful for anything with my setup
+- minor xterm config (backup for alacritty)
 - get a lock screen i guess
-- access ac-library
 - script so that i can charge my battery to 100% if i want to
 - power options (left on, fullscreen, etc)
 - pragmatapro
-- custom zsh prompt
+- custom zsh prompt (git repo integration)
 
