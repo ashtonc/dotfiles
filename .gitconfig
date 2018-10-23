@@ -3,3 +3,5 @@
 	name = Ashton Charbonneau
 [core]
 	editor = vim
+[credential "https://source.developers.google.com"]
+	helper = gcloud.sh
