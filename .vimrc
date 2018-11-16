@@ -1,9 +1,12 @@
-" vundle
+" --------------------------- vundle start
+
 set nocompatible
 filetype off
 
 set rtp +=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
 
 Bundle 'sonph/onehalf', {'rtp': 'vim/'}
 
@@ -12,6 +15,8 @@ filetype plugin indent on
 
 colorscheme onehalflight
 let g:airline_theme='onehalfdark'
+
+" --------------------------- vundle end
 
 " Line numbering
 set number
