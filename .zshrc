@@ -55,9 +55,15 @@ alias .='source ~/.zshrc'
 alias tree='exa -T'
 alias tre='exa -T'
 alias tee='exa -T'
+alias tree1='exa -T -L 1'
+alias tree2='exa -T -L 2'
 
 ## changing programs
 alias top='htop'
+
+# tmux
+
+alias tmux-session='cd ~; tmux new-session -n home \; split-window -h \; new-window -c "projects/anki-decks" -n "anki" \; split-window -h -c "projects/anki-decks" \; new-window -c "applications" -n "applications" \; split-window -h -c "applications" \; move-window -s 3 -t 9 \; move-window -s 2 -t 8 \; select-window -t 1 \; select-pane -t 1'
 
 # Gcloud
 
