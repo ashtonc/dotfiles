@@ -63,7 +63,7 @@ alias top='htop'
 
 # tmux
 
-alias tmux-session='cd ~; tmux new-session -n home \; split-window -h \; new-window -c "projects/anki-decks" -n "anki" \; split-window -h -c "projects/anki-decks" \; new-window -c "applications" -n "applications" \; split-window -h -c "applications" \; move-window -s 3 -t 9 \; move-window -s 2 -t 8 \; select-window -t 1 \; select-pane -t 1'
+alias tmux-session='cd ~; tmux new-session -n home \; split-window -h \; new-window -c "projects/anki-decks" -n "anki" \; split-window -h -c "projects/anki-decks" \; new-window -c "applications" -n "applications" \; split-window -h -c "applications" \; new-window -c "website-manager" -n "website" \; split-window -h -c "website-manager" \; move-window -s 4 -t 7 \; move-window -s 3 -t 9 \; move-window -s 2 -t 8 \; select-window -t 1 \; select-pane -t 1'
 
 # Gcloud
 
