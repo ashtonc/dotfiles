@@ -1,16 +1,11 @@
 #!/bin/bash
 
-list=$(checkupdates)
+list=$(checkupdates && yay -Qum)
 
-if [ "$list" == "" ]; then
-    count=0
-	echo ""
-	exit 0
-else
+if [ "$list" != "" ]; then
     count=`echo "$list" | wc -l`
+	echo " <fn=2></fn> $count <fc=#595D64>|</fc>"
 fi
-
-echo " <fn=2></fn> $count <fc=#595D64>|</fc>"
 
 exit 0
 
