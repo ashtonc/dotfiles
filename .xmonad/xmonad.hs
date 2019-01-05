@@ -1,7 +1,9 @@
 -- Imports
 import XMonad
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
+import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.Spacing
 import XMonad.Util.EZConfig
@@ -13,6 +15,8 @@ main = do
 
     xmonad
         $ docks
+        $ ewmh
+        $ fullscreenSupport
         $ defaultConfig
             { modMask            = myModMask
             , workspaces         = myWorkspaces
@@ -22,6 +26,8 @@ main = do
             , focusedBorderColor = myFocusedBorderColor
             , layoutHook         = myLayoutHook
             , logHook            = myLogHook xmobar
+            , handleEventHook    = myHandleEventHook
+            , manageHook         = myManageHook
             } `additionalKeys`     myKeys
 
 -- Log hook, customize the look of xmobar
@@ -37,7 +43,7 @@ myLogHook xmobar = do
         }
  
 -- Command to launch  xmobar
-myBar                = "xmobar /home/ashton/.xmonad/.xmobarrc"
+myBar                = "xmobar /home/ashton/.xmonad/xmobar/.xmobarrc"
 
 -- Change the default terminal
 myTerminal           = "alacritty"
@@ -45,16 +51,25 @@ myTerminal           = "alacritty"
 -- Change the mod key to the windows (super) key
 myModMask            = mod4Mask
 
--- No borders on fullscreen content, borders around boxes, borders of width 4
+-- Layouts
 myLayoutHook         = avoidStruts
                        $ spacingRaw True (myWindowSpacing) True (myWindowSpacing) True
                        $ smartBorders
-                       $ layoutHook defaultConfig
+                       $ myLayouts
+                     where
+                       myLayouts        = myTall ||| myFull
+                       myFull           = fullscreenFull $ Full
+                       myTall           = fullscreenFull $ Tall myNMaster myRatioIncrement myRatio
+                       myNMaster        = 1
+                       myRatioIncrement = (2 / 100)
+                       myRatio          = (6 / 10)
 
--- Border aesthetics
+myHandleEventHook    = XMonad.Layout.Fullscreen.fullscreenEventHook
+myManageHook         = fullscreenManageHook
+
+-- Layout border
 myNormalBorderColor  = "#282C34"
 myFocusedBorderColor = "#61AFEF"
-
 myWindowSpacing      = Border 4 4 4 4
 myBorderWidth        = 4
 
@@ -70,12 +85,15 @@ myWorkspaces         = [ "<fn=1>一</fn>"
                        , "<fn=1>九</fn>"
                        ]
 
--- Key binding to toggle the gap for the bar
-myKeys               = [ ((myModMask, xK_b    ), sendMessage ToggleStruts)
-                       , ((myModMask, xK_z    ), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do pauseplay")
-                       , ((myModMask, xK_Up   ), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do pauseplay")
-                       , ((myModMask, xK_Down ), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do stop")
-                       , ((myModMask, xK_Right), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do next")
-                       , ((myModMask, xK_Left ), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do previous")
+-- Key bindings
+myKeys               = [ ((myModMask               , xK_b    ), sendMessage ToggleStruts)
+                       , ((myModMask               , xK_p    ), spawn "rofi -show run")
+                       , ((myModMask .|. shiftMask , xK_p    ), spawn "rofi -show window")
+                       , ((myModMask               , xK_a    ), spawn "rofi -show emoji")
+                       , ((myModMask               , xK_z    ), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do pauseplay")
+                       , ((myModMask               , xK_Up   ), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do pauseplay")
+                       , ((myModMask               , xK_Down ), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do stop")
+                       , ((myModMask               , xK_Right), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do next")
+                       , ((myModMask               , xK_Left ), spawn "/home/ashton/.xmonad/xmobar/scripts/gpmdp-control.sh do previous")
                        ]
 

@@ -1,7 +1,12 @@
-rofi.modi:              run
+rofi.modi:              run,window,emoji
+rofi.terminal:          alacritty
+
 rofi.location:          1
 rofi.width:             100
-rofi.lines:             3
+rofi.yoffset:           23
+
+rofi.lines:             10
+
 rofi.line-margin:       0
 rofi.line-padding:      1
 rofi.separator-style:   none

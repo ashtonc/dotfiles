@@ -17,52 +17,49 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 
 ## Programs
 
-- alacritty
-- xterm
-
-- feh
-- mpv
-- vim
-- emacs
-- tmux
-- ranger
-- rofi
-
-- xmonad
-- xmobar
+- window management
+	- xmonad
+	- xmobar
+	- rofi
+- terminal
+	- alacritty
+	- tmux
+	- zsh
+- media
+	- mpv
+	- feh
+	- zathura
+	- ranger
+- editor
+	- vim
+	- emacs
 
 ## To do
 
-- libinput gestures
-- color scheme script to prevent rewriting it
-- xmobar weather location change script
-- xmonad fullscreen support (http://hackage.haskell.org/package/xmonad-contrib-0.14/docs/XMonad-Layout-Fullscreen.html)
-- dynamic workspaces for xmonad?
-- more (fewer?) xmonad layouts
-- xmonad scratchpad (maybe)
-- use emacs more
+- control
+	- libinput gestures
+	- think of better remaps for the keyboard thing at F11 and tools at F9
+- xmonad
+	- xmobar weather location change script
+	- dynamic workspaces?
+	- more (fewer?) layouts
+	- xmonad scratchpad? (maybe)
+- tmux
+	- tmux design changes
+	- tmux color scheme
+- rofi
+	- wifi menu
+	- power menu
+- scripts
+	- script so that i can charge my battery to 100% once
+	- color scheme script to prevent duplicate entries
+- design
+	- vim color scheme fix
+	- wallpaper? maybe
+	- zsh prompt git repo integration
+	- minor xterm config (backup for alacritty)
+- buy pragmatapro
 - better org mode integrations
-- tmux design changes
-- tmux color scheme
-- full disk encryption, LUKS, LVM
-- vim color scheme fix
-- reformat anki decks as json (ankidm/crowdanki) and script them...
-- think of a better remap for the keyboard thing at F11 and tools at F9
 - learn to use ranger
-- set up rofi
-- wallpaper? maybe
-- alternate account
-- airport/security considerations
-- false windows partition??
-- phone home script (loss prevention) - set up computrace?
-- keep up to date with the fingerprint validity90 stuff
-- yubikey setup
-- gpgcard setup
 - see if xresources is useful for anything with my setup
-- minor xterm config (backup for alacritty)
-- get a lock screen i guess
-- script so that i can charge my battery to 100% if i want to
-- power options (left on, fullscreen, etc)
-- pragmatapro
-- custom zsh prompt (git repo integration)
 

@@ -24,11 +24,11 @@ if [ "$charging" = "Charging" ]; then
 else
 	if [ "$percentage" -ge 0 -a "$percentage" -le 20 ]; then
 		echo "<fn=2></fn> <fc=$red>$percentage</fc>% (${powerdraw}W)"
-	elif [ "$percentage" -ge 21 -a "$percentage" -le 40 ]; then
+	elif [ "$percentage" -ge 21 -a "$percentage" -le 30 ]; then
 		echo "<fn=2></fn> <fc=$red>$percentage</fc>% (${powerdraw}W)"
-	elif [ "$percentage" -ge 41 -a "$percentage" -le 60 ]; then
+	elif [ "$percentage" -ge 31 -a "$percentage" -le 50 ]; then
 		echo "<fn=2></fn> <fc=$orange>$percentage</fc>% (${powerdraw}W)"
-	elif [ "$percentage" -ge 61 -a "$percentage" -le 80 ]; then
+	elif [ "$percentage" -ge 51 -a "$percentage" -le 70 ]; then
 		echo "<fn=2></fn> <fc=$orange>$percentage</fc>% (${powerdraw}W)"
 	else
 		echo "<fn=2></fn> <fc=$green>$percentage</fc>% (${powerdraw}W)"
