@@ -2,9 +2,7 @@
 
 btstatus=$(bluetooth)
 
-if [[ "$btstatus" == *"= off"* ]]; then
-	echo ""
-else
+if [[ "$btstatus" != *"= off"* ]]; then
 	echo "<fc=#595D64>|</fc> <fn=3></fn> "
 fi
 

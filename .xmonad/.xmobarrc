@@ -25,14 +25,6 @@ Config {
                         , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/get-wifi.sh"
                                                    ] "mywifi" 50
 
-                        , Run Wireless "wlp4s0"    [ "--template" , "<essid>"
-                                                   , "-L"         , "40"
-                                                   , "-H"         , "70"
-                                                   , "--low"      , "#E06C75"
-                                                   , "--normal"   , "#E5C07B"
-                                                   , "--high"     , "#98C379"
-                                                   ] 50
-
                         , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/get-bluetooth.sh"
                                                    ] "mybluetooth" 50
 
@@ -67,6 +59,14 @@ Config {
 --                                                 , "--high"     , "#98C379"
 --                                                 ] 10
 
+--                      , Run Wireless "wlp4s0"    [ "--template" , "<essid>"
+--                                                 , "-L"         , "40"
+--                                                 , "-H"         , "70"
+--                                                 , "--low"      , "#E06C75"
+--                                                 , "--normal"   , "#E5C07B"
+--                                                 , "--high"     , "#98C379"
+--                                                 ] 50
+
 --                      , Run Cpu                  [ "-L", "5"
 --                                                 , "-H", "50"
 --                                                 , "--normal"   , "#98C379"
@@ -88,7 +88,7 @@ Config {
                         \%myupdates%\
                         \<action=pulseaudio-ctl mute> %myvolume% </action>\
                         \<fc=#595D64>|</fc><action=~/.xmonad/xmobar/scripts/cycle-brightness.sh> %mybrightness% </action>\
-                        \<fc=#595D64>|</fc> %mywifi% %wlp4s0wi% \
+                        \<fc=#595D64>|</fc> %mywifi% \
                         \%mybluetooth%\
                         \<fc=#595D64>|</fc> %CYYC% \
                         \<fc=#595D64>|</fc> %mybattery%\
