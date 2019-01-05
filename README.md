@@ -15,24 +15,28 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
     alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
     cfg config status.showUntrackedFiles no
 
-## Programs
+## Primary software
 
 - window management
 	- xmonad
 	- xmobar
-	- rofi
 - terminal
 	- alacritty
 	- tmux
 	- zsh
+- editor
+	- vim
+	- emacs
 - media
 	- mpv
 	- feh
 	- zathura
+	- gpmdp
+- files
 	- ranger
-- editor
-	- vim
-	- emacs
+- program dispatch
+	- rofi
+	- rofi-emoji
 
 ## To do
 
@@ -40,6 +44,7 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 	- libinput gestures
 	- think of better remaps for the keyboard thing at F11 and tools at F9
 - xmonad
+	- fullscreen content for Tall stays inside the box
 	- xmobar weather location change script
 	- dynamic workspaces?
 	- more (fewer?) layouts
