@@ -9,12 +9,16 @@ xmodmap -e 'keycode 107 = Caps_Lock'
 # Initialize xbindkeys
 xbindkeys &
 
-# Set backgrond
-xsetroot -solid "#282C34"
-
 # Start Dropbox
 killall dropbox
 dropbox &
 
+# Set backgrond color
+hsetroot -solid "#282C34"
+
+# Start the compositor
+compton &
+
 # Start xmonad
 exec xmonad
+

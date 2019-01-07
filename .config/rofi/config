@@ -1,5 +1,0 @@
-rofi.modi:              run,window,emoji
-rofi.terminal:          alacritty
-
-rofi.theme:             sidetab
-

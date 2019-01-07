@@ -20,6 +20,7 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 - window management
 	- xmonad
 	- xmobar
+	- compton for compositing
 - terminal
 	- alacritty
 	- tmux

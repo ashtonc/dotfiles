@@ -8,7 +8,7 @@ configuration {
 	display-run:     "Execute";
 	display-window:  "Window";
 	display-emoji:   "Emoji";
-	show-icons:      true;
+	show-icons:      false;
 	sidebar-mode:    true;
 }
 

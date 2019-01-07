@@ -2,6 +2,7 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders (smartBorders)
@@ -9,7 +10,7 @@ import XMonad.Layout.Spacing
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
 
--- Start xmonad with xmobar
+-- Start xmonad and xmobar
 main = do
     xmobar <- spawnPipe myBar
 
@@ -25,20 +26,32 @@ main = do
             , normalBorderColor  = myNormalBorderColor
             , focusedBorderColor = myFocusedBorderColor
             , layoutHook         = myLayoutHook
-            , logHook            = myLogHook xmobar
+            , logHook            = myLogHook xmobar >> fadeInactiveLogHook myFadeAmount
             , handleEventHook    = myHandleEventHook
             , manageHook         = myManageHook
             } `additionalKeys`     myKeys
 
--- Log hook, customize the look of xmobar
-myLogHook xmobar = do
+-- Colors and design
+myBackgroundColor    = "#282C34"
+myForegroundColor    = "#DFDFE4"
+myFadedFGColor       = "#595D64"
+myHighlightColor     = "#61AFEF"
+myFadeAmount         = 0.9
+
+-- Customize xmobar and the log hook
+myLogHook xmobar     = do
     dynamicLogWithPP $ def
-        { ppCurrent         = xmobarColor "#61AFEF" "" . wrap "" ""
-        , ppHidden          = xmobarColor "#DFDFE4" "" . wrap "" ""
-        , ppHiddenNoWindows = xmobarColor "#595D64" "" . wrap "" ""
-        , ppTitle           = xmobarColor "#DFDFE4" "" . shorten 64
-        , ppSep             = " <fc=#595D64>|</fc> "
-        , ppLayout          = const ""
+        { ppCurrent         = xmobarColor myHighlightColor "" . wrap "" ""
+        , ppHidden          = xmobarColor myForegroundColor "" . wrap "" ""
+        , ppHiddenNoWindows = xmobarColor myFadedFGColor "" . wrap "" ""
+        , ppTitle           = xmobarColor myForegroundColor "" . shorten 64
+        , ppSep             = " <fc=" ++ myFadedFGColor ++ ">|</fc> "
+        , ppLayout          = xmobarColor myForegroundColor "" .
+                              (\x -> case x of
+                                "Spacing Tall" -> "T"
+                                "Spacing Full" -> "F"
+                                _              -> "?"
+                              )
         , ppOutput          = hPutStrLn xmobar
         }
  
@@ -68,8 +81,8 @@ myHandleEventHook    = XMonad.Layout.Fullscreen.fullscreenEventHook
 myManageHook         = fullscreenManageHook
 
 -- Layout border
-myNormalBorderColor  = "#282C34"
-myFocusedBorderColor = "#61AFEF"
+myNormalBorderColor  = myBackgroundColor
+myFocusedBorderColor = myHighlightColor     
 myWindowSpacing      = Border 4 4 4 4
 myBorderWidth        = 4
 
