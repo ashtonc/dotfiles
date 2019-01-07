@@ -1,5 +1,6 @@
 -- Imports
 import XMonad
+import XMonad.Actions.DynamicProjects
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.FadeInactive (isUnfocusedOnCurrentWS)
@@ -17,6 +18,7 @@ main = do
     xmobar <- spawnPipe myBar
 
     xmonad
+        $ dynamicProjects myProjects
         $ docks
         $ ewmh
         $ fullscreenSupport
@@ -66,9 +68,9 @@ myFocusedBorderColor = myHighlightColor
 myWindowSpacing      = Border 4 4 4 4
 myBorderWidth        = 0
 
-myUnfocusedFade      = 0.8
+myUnfocusedFade      = 0.90
 myFloatingFade       = 0.96
-myUnfocusedFloatFade = 0.5
+myUnfocusedFloatFade = 0.80
 
 -- Custom workspace names
 myWorkspace1Name     = "<fn=1>一</fn>"
@@ -80,6 +82,13 @@ myWorkspace6Name     = "<fn=1>六</fn>"
 myWorkspace7Name     = "<fn=1>七</fn>"
 myWorkspace8Name     = "<fn=1>八</fn>"
 myWorkspace9Name     = "<fn=1>九</fn>"
+
+-- Workspace-specific program launching
+myProjects           = [ Project { projectName      = myWorkspace3Name
+                                 , projectDirectory = "~"
+                                 , projectStartHook = Just $ do spawn myTerminal
+                                 }
+                       ]
 
 -- Launch xmobar with config
 myBar                = "xmobar /home/ashton/.xmonad/xmobar/.xmobarrc"
@@ -130,8 +139,8 @@ myManageHook         = fullscreenManageHook
 
 -- Set window fading
 myFadeHook           = composeAll [ opaque
-                                  , isUnfocusedOnCurrentWS --> opacity myUnfocusedFade
                                   , isFloating --> opacity myFloatingFade
+                                  , isUnfocusedOnCurrentWS --> opacity myUnfocusedFade
                                   ]
 
 -- Set the workspace names

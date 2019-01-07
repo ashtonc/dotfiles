@@ -47,9 +47,12 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 - xmonad
 	- fullscreen content for Tall stays inside the box
 	- xmobar weather location change script
-	- dynamic workspaces?
-	- more (fewer?) layouts
 	- xmonad scratchpad? (maybe)
+	- resize borders with the mouse
+	- further fade unfocused floating windows
+	- on WS2, spawn terminal with tmux-session
+	- might be nice to switch Tall to another layout
+	- more projects
 - tmux
 	- tmux design changes
 	- tmux color scheme
