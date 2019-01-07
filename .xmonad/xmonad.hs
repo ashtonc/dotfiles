@@ -4,6 +4,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.Spacing
@@ -18,6 +19,7 @@ main = do
         $ docks
         $ ewmh
         $ fullscreenSupport
+        $ withUrgencyHook NoUrgencyHook
         $ defaultConfig
             { modMask            = myModMask
             , workspaces         = myWorkspaces
@@ -31,12 +33,59 @@ main = do
             , manageHook         = myManageHook
             } `additionalKeys`     myKeys
 
--- Colors and design
-myBackgroundColor    = "#282C34"
-myForegroundColor    = "#DFDFE4"
-myFadedFGColor       = "#595D64"
-myHighlightColor     = "#61AFEF"
+-- Colors (sonph/onehalf)
+colorDarkBackground  = "#282C34"
+colorDarkForeground  = "#DCDFE4"
+colorDarkFadedFG     = "#595D64"
+colorDarkRed         = "#E06C75"
+colorDarkGreen       = "#98C379"
+colorDarkYellow      = "#E5C07B"
+colorDarkBlue        = "#61AFEF"
+colorDarkMagenta     = "#C678DD"
+colorDarkCyan        = "#56B6C2"
+colorLightBackground = "#FAFAFA"
+colorLightForeground = "#383A42"
+colorLightRed        = "#E45649"
+colorLightGreen      = "#50A14F"
+colorLightYellow     = "#C18401"
+colorLightBlue       = "#0184BC"
+colorLightMagenta    = "#A626A4"
+colorLightCyan       = "#0997B3"
+
+-- Design
+myBackgroundColor    = colorDarkBackground
+myForegroundColor    = colorDarkForeground
+myFadedFGColor       = colorDarkFadedFG
+myHighlightColor     = colorDarkBlue
+myUrgentColor        = colorDarkRed
+
+myNormalBorderColor  = myBackgroundColor
+myFocusedBorderColor = myHighlightColor
+
+myWindowSpacing      = Border 4 4 4 4
+myBorderWidth        = 4
+
 myFadeAmount         = 0.9
+
+-- Custom workspace names
+myWorkspace1Name     = "<fn=1>一</fn>"
+myWorkspace2Name     = "<fn=1>二</fn>"
+myWorkspace3Name     = "<fn=1>三</fn>"
+myWorkspace4Name     = "<fn=1>四</fn>"
+myWorkspace5Name     = "<fn=1>五</fn>"
+myWorkspace6Name     = "<fn=1>六</fn>"
+myWorkspace7Name     = "<fn=1>七</fn>"
+myWorkspace8Name     = "<fn=1>八</fn>"
+myWorkspace9Name     = "<fn=1>九</fn>"
+
+-- Launch xmobar with config
+myBar                = "xmobar /home/ashton/.xmonad/xmobar/.xmobarrc"
+
+-- Set the default terminal
+myTerminal           = "alacritty"
+
+-- Set the mod key to the windows (super) key
+myModMask            = mod4Mask
 
 -- Customize xmobar and the log hook
 myLogHook xmobar     = do
@@ -44,6 +93,7 @@ myLogHook xmobar     = do
         { ppCurrent         = xmobarColor myHighlightColor "" . wrap "" ""
         , ppHidden          = xmobarColor myForegroundColor "" . wrap "" ""
         , ppHiddenNoWindows = xmobarColor myFadedFGColor "" . wrap "" ""
+        , ppUrgent          = xmobarColor myUrgentColor "" . wrap "" ""
         , ppTitle           = xmobarColor myForegroundColor "" . shorten 64
         , ppSep             = " <fc=" ++ myFadedFGColor ++ ">|</fc> "
         , ppLayout          = xmobarColor myForegroundColor "" .
@@ -54,17 +104,8 @@ myLogHook xmobar     = do
                               )
         , ppOutput          = hPutStrLn xmobar
         }
- 
--- Command to launch  xmobar
-myBar                = "xmobar /home/ashton/.xmonad/xmobar/.xmobarrc"
 
--- Change the default terminal
-myTerminal           = "alacritty"
-
--- Change the mod key to the windows (super) key
-myModMask            = mod4Mask
-
--- Layouts
+-- Customize the layouts
 myLayoutHook         = avoidStruts
                        $ spacingRaw True (myWindowSpacing) True (myWindowSpacing) True
                        $ smartBorders
@@ -80,22 +121,16 @@ myLayoutHook         = avoidStruts
 myHandleEventHook    = XMonad.Layout.Fullscreen.fullscreenEventHook
 myManageHook         = fullscreenManageHook
 
--- Layout border
-myNormalBorderColor  = myBackgroundColor
-myFocusedBorderColor = myHighlightColor     
-myWindowSpacing      = Border 4 4 4 4
-myBorderWidth        = 4
-
--- Custom workspace numbers
-myWorkspaces         = [ "<fn=1>一</fn>"
-                       , "<fn=1>二</fn>"
-                       , "<fn=1>三</fn>"
-                       , "<fn=1>四</fn>"
-                       , "<fn=1>五</fn>"
-                       , "<fn=1>六</fn>"
-                       , "<fn=1>七</fn>"
-                       , "<fn=1>八</fn>"
-                       , "<fn=1>九</fn>"
+-- Set the workspace names
+myWorkspaces         = [ myWorkspace1Name
+                       , myWorkspace2Name
+                       , myWorkspace3Name
+                       , myWorkspace4Name
+                       , myWorkspace5Name
+                       , myWorkspace6Name
+                       , myWorkspace7Name
+                       , myWorkspace8Name
+                       , myWorkspace9Name
                        ]
 
 -- Key bindings
