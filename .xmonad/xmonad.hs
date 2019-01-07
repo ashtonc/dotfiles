@@ -2,7 +2,8 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.FadeInactive
+import XMonad.Hooks.FadeInactive (isUnfocusedOnCurrentWS)
+import XMonad.Hooks.FadeWindows
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.Fullscreen
@@ -28,7 +29,7 @@ main = do
             , normalBorderColor  = myNormalBorderColor
             , focusedBorderColor = myFocusedBorderColor
             , layoutHook         = myLayoutHook
-            , logHook            = myLogHook xmobar >> fadeInactiveLogHook myFadeAmount
+            , logHook            = myLogHook xmobar
             , handleEventHook    = myHandleEventHook
             , manageHook         = myManageHook
             } `additionalKeys`     myKeys
@@ -63,9 +64,11 @@ myNormalBorderColor  = myBackgroundColor
 myFocusedBorderColor = myHighlightColor
 
 myWindowSpacing      = Border 4 4 4 4
-myBorderWidth        = 4
+myBorderWidth        = 0
 
-myFadeAmount         = 0.9
+myUnfocusedFade      = 0.8
+myFloatingFade       = 0.96
+myUnfocusedFloatFade = 0.5
 
 -- Custom workspace names
 myWorkspace1Name     = "<fn=1>一</fn>"
@@ -89,6 +92,8 @@ myModMask            = mod4Mask
 
 -- Customize xmobar and the log hook
 myLogHook xmobar     = do
+    fadeWindowsLogHook myFadeHook
+    ewmhDesktopsLogHook
     dynamicLogWithPP $ def
         { ppCurrent         = xmobarColor myHighlightColor "" . wrap "" ""
         , ppHidden          = xmobarColor myForegroundColor "" . wrap "" ""
@@ -107,19 +112,27 @@ myLogHook xmobar     = do
 
 -- Customize the layouts
 myLayoutHook         = avoidStruts
-                       $ spacingRaw True (myWindowSpacing) True (myWindowSpacing) True
-                       $ smartBorders
-                       $ myLayouts
-                     where
-                       myLayouts        = myTall ||| myFull
-                       myFull           = fullscreenFull $ Full
-                       myTall           = fullscreenFull $ Tall myNMaster myRatioIncrement myRatio
-                       myNMaster        = 1
-                       myRatioIncrement = (2 / 100)
-                       myRatio          = (6 / 10)
+                     $ spacingRaw True (myWindowSpacing) True (myWindowSpacing) True
+                     $ smartBorders
+                     $ myLayouts
+                   where
+                     myLayouts        = myTall ||| myFull
+                     myFull           = fullscreenFull $ Full
+                     myTall           = fullscreenFull $ Tall myNMaster myRatioIncrement myRatio
+                     myNMaster        = 1
+                     myRatioIncrement = (2 / 100)
+                     myRatio          = (6 / 10)
 
-myHandleEventHook    = XMonad.Layout.Fullscreen.fullscreenEventHook
+myHandleEventHook    = fadeWindowsEventHook
+                   <+> XMonad.Layout.Fullscreen.fullscreenEventHook
+
 myManageHook         = fullscreenManageHook
+
+-- Set window fading
+myFadeHook           = composeAll [ opaque
+                                  , isUnfocusedOnCurrentWS --> opacity myUnfocusedFade
+                                  , isFloating --> opacity myFloatingFade
+                                  ]
 
 -- Set the workspace names
 myWorkspaces         = [ myWorkspace1Name
