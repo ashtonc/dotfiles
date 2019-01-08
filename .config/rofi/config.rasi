@@ -1,11 +1,20 @@
 
-
 configuration {
 	modi: "run,window,emoji,calc";
+	matching: "normal";
+	sort: true;
+	scroll-method: 1;
+	max-history-size: 50;
+
 	terminal: "alacritty";
+	ssh-client: "ssh";
 
 	font: "Noto Sans Mono 12";
-//	theme: "sidetab";
+	sidebar-mode: true;
+	show-icons: false;
+	fixed-num-lines: false;
+	separator-style: "none";
+	hide-scrollbar: true;
 
 	display-run: "Execute";
 	display-window: "Window";
@@ -15,75 +24,6 @@ configuration {
 	window-match-fields: "title,class,role,name";
 	window-format: "{c}   {t}";
 
-	show-icons: false;
-
-	matching: "normal";
-
-
-/*	width: 50;*/
-/*	lines: 15;*/
-/*	columns: 1;*/
-/*	bw: 1;*/
-/*	location: 0;*/
-/*	padding: 5;*/
-/*	yoffset: 0;*/
-/*	xoffset: 0;*/
-/*	fixed-num-lines: true;*/
-/*	show-icons: false;*/
-/*	ssh-client: "ssh";*/
-/*	ssh-command: "{terminal} -e {ssh-client} {host}";*/
-/*	run-command: "{cmd}";*/
-/*	run-list-command: "";*/
-/*	run-shell-command: "{terminal} -e {cmd}";*/
-/*	window-command: "xkill -id {window}";*/
-/*	icon-theme: ;*/
-/*	drun-match-fields: "name,generic,exec,categories";*/
-/*	drun-show-actions: false;*/
-/*	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";*/
-/*	disable-history: false;*/
-/*	sort: false;*/
-/*	sorting-method: ;*/
-/*	case-sensitive: false;*/
-/*	cycle: true;*/
-/*	sidebar-mode: false;*/
-/*	eh: 1;*/
-/*	auto-select: false;*/
-/*	parse-hosts: false;*/
-/*	parse-known-hosts: true;*/
-/*	combi-modi: "window,run";*/
-/*	tokenize: true;*/
-/*	m: "-5";*/
-/*	line-margin: 2;*/
-/*	line-padding: 1;*/
-/*	filter: ;*/
-/*	separator-style: "dash";*/
-/*	hide-scrollbar: false;*/
-/*	fullscreen: false;*/
-/*	fake-transparency: false;*/
-/*	dpi: -1;*/
-/*	threads: 0;*/
-/*	scrollbar-width: 8;*/
-/*	scroll-method: 0;*/
-/*	fake-background: "screenshot";*/
-/*	click-to-exit: true;*/
-/*	show-match: true;*/
-/*	theme: ;*/
-/*	color-normal: ;*/
-/*	color-urgent: ;*/
-/*	color-active: ;*/
-/*	color-window: ;*/
-/*	max-history-size: 25;*/
-/*	combi-hide-mode-prefix: false;*/
-/*	matching-negate-char: '-' /* unsupported */;*/
-/*	pid: "/run/user/1000/rofi.pid";*/
-/*	display-window: ;*/
-/*	display-windowcd: ;*/
-/*	display-run: ;*/
-/*	display-ssh: ;*/
-/*	display-drun: ;*/
-/*	display-combi: ;*/
-/*	display-keys: ;*/
-/*	display-emoji: ;*/
 /*	kb-primary-paste: "Control+V,Shift+Insert";*/
 /*	kb-secondary-paste: "Control+v,Insert";*/
 /*	kb-clear-line: "Control+w";*/
@@ -174,13 +114,77 @@ configuration {
 	blue-light: #0184BC;
 	magenta-light: #A626A4;
 	cyan-light: #0997B3;
-	background-dark-transparent: #282C34AA;
+	background-dark-transparent: #282C34CC;
+
+	background-color: transparent;
+	text-color: @foreground-dark;
+	border-color: @background-dark-transparent;
+
+	margin: 0;
+	padding: 0;
+	border: 0;
+
+	highlight-light: @blue-light;
+	highlight-dark: @blue-dark;
+	urgent-light: @red-light;
+	urgent-dark: @red-dark;
+
+	border-decoration: 0 0 0 8px;
 }
 
 window {
-	fullscreen: true;
-	orientation: horizontal;
-	padding: 200px;
 	background-color: @background-dark-transparent;
+	fullscreen: true;
+	padding: 108px 240px 108px 240px;
+	orientation: horizontal;
+	children: [ mainbox ];
+}
+
+mainbox {
+	background-color: @background-dark-transparent;
+	children: [ entry, listview, sidebar ];
+}
+
+entry {
+	padding: 12px 8px 8px 12px;
+	expand: false;
+}
+
+element {
+	padding: 8px 8px 8px 12px;
+}
+
+element selected {
+	background-color: @background-light;
+	text-color: @foreground-light;
+}
+
+element selected.active {
+	border: @border-decoration;
+	border-color: @highlight-light;
+}
+
+element selected.urgent {
+	border: @border-decoration;
+	border-color: @urgent-light;
+}
+
+element normal.active, element alternate.active {
+	border: @border-decoration;
+	border-color: @highlight-dark;
+}
+
+element normal.urgent, element alternate.urgent {
+	border: @border-decoration;
+	border-color: @urgent-dark;
+}
+
+button {
+	padding: 8px 0 8px 0;
+}
+
+button selected {
+	background-color: @background-light;
+	text-color: @foreground-light;
 }
 
