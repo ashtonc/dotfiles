@@ -41,10 +41,7 @@ get_info()
 
 if [ "$intent" = "debug" ]; then
 	dbus-send --print-reply --session --dest=$destination $interface $properties string:$string string:'Metadata'
-	exit 0
-fi
-
-if [ "$intent" = "get" ]; then
+elif [ "$intent" = "get" ]; then
 	if [ "$property" = "track" ]; then
 		dbus-send --print-reply --session --dest=$destination $interface $properties string:$string string:'Metadata' \
 		| grep -A1 "xesam:title" | tail -1 | cut -d '"' -f 2
@@ -77,11 +74,9 @@ if [ "$intent" = "get" ]; then
 		| grep "variant" | cut -d '"' -f 2
 	else
 		echo "Invalid property."
+		exit 1
 	fi
-	exit 0
-fi
-
-if [ "$intent" = "do" ]; then
+elif [ "$intent" = "do" ]; then
 	if [ "$action" = "pauseplay" ]; then
 		echo "Toggling pause/play..."
 		dbus-send --print-reply --dest=$destination $interface org.mpris.MediaPlayer2.Player.PlayPause > /dev/null 2>&1
@@ -109,25 +104,22 @@ if [ "$intent" = "do" ]; then
 	else
 		echo "Invalid action."
 	fi
-	exit 0
-fi
-
-if [ "$intent" = "bar" ]; then
+elif [ "$intent" = "bar" ]; then
 	playbackstatus=$($script get playbackstatus)
 	
 	if [ "$playbackstatus" = "Playing" ]; then
 #		get_info
 		echo "<action=$script do pauseplay> <fn=2></fn> </action><fc=#595D64>|</fc>"
-	elif [ "$playbackstatus" = "Paused" ]; then
+	fi
+
+	if [ "$playbackstatus" = "Paused" ]; then
 #		get_info
 		echo "<action=$script do pauseplay> <fn=2></fn> </action><fc=#595D64>|</fc>"
-	else
-		exit 0
 	fi
-	exit 0
+else
+	echo "Invalid intent."
+	exit 1
 fi
-
-echo "Invalid intent."
 
 exit 0
 

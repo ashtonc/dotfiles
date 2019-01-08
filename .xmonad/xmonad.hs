@@ -84,7 +84,7 @@ myWorkspace8Name     = "<fn=1>八</fn>"
 myWorkspace9Name     = "<fn=1>九</fn>"
 
 -- Workspace-specific program launching
-myProjects           = [ Project { projectName      = myWorkspace3Name
+myProjects           = [ Project { projectName      = myWorkspace2Name
                                  , projectDirectory = "~"
                                  , projectStartHook = Just $ do spawn myTerminal
                                  }

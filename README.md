@@ -17,10 +17,10 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 
 ## Primary software
 
-- window management
+- window management/display
 	- xmonad
 	- xmobar
-	- compton for compositing
+	- compton
 - terminal
 	- alacritty
 	- tmux
@@ -38,6 +38,7 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 - program dispatch
 	- rofi
 	- rofi-emoji
+	- rofi-calc
 
 ## To do
 
@@ -53,6 +54,7 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 	- on WS2, spawn terminal with tmux-session
 	- might be nice to switch Tall to another layout
 	- more projects
+	- per-workspace layouts
 - tmux
 	- tmux design changes
 	- tmux color scheme
@@ -62,12 +64,14 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 - scripts
 	- script so that i can charge my battery to 100% once
 	- color scheme script to prevent duplicate entries
+	- note-taking script; append to something in org
 - design
 	- vim color scheme fix
 	- wallpaper? maybe
 	- zsh prompt git repo integration
 	- minor xterm config (backup for alacritty)
-- buy pragmatapro
+	- compton config
+- buy pragmatapro and switch to that
 - better org mode integrations
 - learn to use ranger
 - see if xresources is useful for anything with my setup
