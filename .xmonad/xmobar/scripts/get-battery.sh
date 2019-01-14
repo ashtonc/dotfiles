@@ -13,7 +13,10 @@ battery1percent=`echo "$info" | grep 'Battery 1' | grep -v 'capacity' | awk '{pr
 
 let totalcharge="(($battery0percent * battery0capacity / 100) + ($battery1percent * battery1capacity / 100))"
 let percentage="100 * $totalcharge / $totalcapacity"
-powerdraw=$(bc <<< "scale=1; $(cat /sys/class/power_supply/BAT1/power_now)/1000000")
+
+powerdraw0=$(cat /sys/class/power_supply/BAT0/power_now)
+powerdraw1=$(cat /sys/class/power_supply/BAT1/power_now)
+powerdraw=$(bc <<< "scale=1; $(expr $powerdraw0 + $powerdraw1)/1000000")
 
 green="#98C379"
 orange="#E5C07B"
