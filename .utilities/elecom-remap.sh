@@ -18,3 +18,4 @@ for i in $ids
 do
 	xinput set-button-map $i 1 2 3 4 5 6 7 8 9 2 11 1
 done
+

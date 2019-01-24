@@ -1,4 +1,5 @@
 /* usbreset -- send a USB port reset to a USB device */
+/* source: https://askubuntu.com/questions/645/how-do-you-reset-a-usb-device-from-the-command-line */
 
 #include <stdio.h>
 #include <unistd.h>

@@ -1,15 +1,33 @@
 #!/bin/bash
 
-wget -q --spider https://google.ca
+showupdates="true"
+showupdatescount="true"
 
-if [ $? -eq 0 ]; then
-	list=$(checkupdates && yay -Qum)
-	if [ "$list" != "" ]; then
-		count=`echo "$list" | wc -l`
-		echo " <fn=2></fn> $count <fc=#595D64>|</fc>"
+xmobarspacer="<fc=#595D64>|</fc>"
+iconupdates="<fn=2></fn>"
+iconnointernet="<fn=2></fn>"
+
+if [ "$showupdates" = "true" ]; then
+	wget -q --spider https://google.ca
+
+	if [ $? -eq 0 ]; then
+		list=$(checkupdates && yay -Qum)
+
+		if [ "$list" = "" ]; then
+			exit 0
+		else
+			count=`echo "$list" | wc -l`
+		fi
+
+		if [ "$showupdatescount" = "true" ]; then
+			echo " $iconupdates $count $xmobarspacer"
+		else
+			echo " $iconupdates $xmobarspacer"
+		fi
+
+	else
+		echo " $iconnointernet $xmobarspacer"
 	fi
-else
-	echo " <fn=2></fn> <fc=#595D64>|</fc>"
 fi
 
 exit 0

@@ -84,9 +84,14 @@ myWorkspace8Name     = "<fn=1>八</fn>"
 myWorkspace9Name     = "<fn=1>九</fn>"
 
 -- Workspace-specific program launching
-myProjects           = [ Project { projectName      = myWorkspace2Name
+myProjects           = [ Project { projectName      = myWorkspace1Name
                                  , projectDirectory = "~"
-                                 , projectStartHook = Just $ do spawn myTerminal
+                                 , projectStartHook = Nothing
+                                 }
+
+                       , Project { projectName      = myWorkspace2Name
+                                 , projectDirectory = "~"
+                                 , projectStartHook = Just $ do spawn $ myTerminal ++ " -e tmux-default"
                                  }
                        ]
 

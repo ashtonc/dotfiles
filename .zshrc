@@ -1,5 +1,7 @@
 # Prompt
 PROMPT='%~ %B|%b '
+
+# System variables
 EDITOR='vim'
 VISUAL=$EDITOR
 PAGER='less'
@@ -31,9 +33,6 @@ promptinit
 # Cabal
 PATH=$PATH:~/.cabal/bin
 
-# Config scripts
-PATH=$PATH:~/.config/bin
-
 # Aliases
 ## Backlight
 alias light='xbacklight'
@@ -61,18 +60,6 @@ alias tree2='exa -T -L 2'
 ## changing programs
 alias top='htop'
 
-# tmux
-
-alias tmux-session='cd ~; tmux new-session -n home \; split-window -h \; new-window -c "projects/anki-decks" -n "anki" \; split-window -h -c "projects/anki-decks" \; new-window -c "applications" -n "applications" \; split-window -h -c "applications" \; new-window -c "website-manager" -n "website" \; split-window -h -c "website-manager" \; move-window -s 4 -t 7 \; move-window -s 3 -t 9 \; move-window -s 2 -t 8 \; select-window -t 1 \; select-pane -t 1'
-
-# Gcloud
-
-## The next line updates PATH for the Google Cloud SDK.
-if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then source '/opt/google-cloud-sdk/path.zsh.inc'; fi
-
-## The next line enables shell command completion for gcloud.
-if [ -f '/opt/google-cloud-sdk/completion.zsh.inc' ]; then source '/opt/google-cloud-sdk/completion.zsh.inc'; fi
-
 # fzf
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
@@ -86,10 +73,5 @@ bindkey "^[[7~" beginning-of-line
 bindkey "^[[3~" delete-char
 bindkey "^[[2~" quoted-insert
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/ashton/google-cloud-sdk/path.zsh.inc' ]; then source '/home/ashton/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/ashton/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/ashton/google-cloud-sdk/completion.zsh.inc'; fi
-
 source ~/.config/private-aliases
+
