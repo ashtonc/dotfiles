@@ -51,17 +51,16 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 	- xmonad scratchpad? (maybe)
 	- resize borders with the mouse
 	- further fade unfocused floating windows
-	- on WS2, spawn terminal with tmux-session
 	- might be nice to switch Tall to another layout
 	- more projects
-	- per-workspace layouts (at least set default to tall/full/etc
+	- per-workspace layouts (at least set default to tall/full/etc)
 	- handle more of my keyboard shortcuts
 	- prompt to quit on mod+shift+q
 	- show todo/calendar items in bar?
 - tmux
 	- tmux design changes
 	- tmux color scheme
-	- tmux-session to a shell script
+	- consider other layouts
 - rofi
 	- wifi menu
 	- power menu
@@ -71,7 +70,6 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 	- script so that i can charge my battery to 100% once
 	- color scheme script to prevent duplicate entries
 	- note-taking script; append to something in org
-	- new location + symlinks to ~/.local/bin
 - design
 	- vim color scheme fix
 	- wallpaper? maybe
@@ -103,4 +101,5 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 - see if xresources is useful for anything with my setup
 - improve folder structure in home directory
 - better booksmarks management (keep in a git repo)
+- newsboat?
 

@@ -6,23 +6,21 @@
 
 # Notes
 # This script manages my custom scripts and small utlity programs.
-# Do not use spaces in any of the file names.
+# Do not use spaces in any of the file names for now.
 
 # Goals
-# - Create symbolic links for scripts to /usr/local/bin
-# - Only manage a defined subset of the scripts in this folder
-# - Remove '.sh' from shell script endings
-# - Also pass in the occasional binary with no '.sh'
-# - Allow subfolders for organization
+# [X] Create symbolic links for utilities to /usr/local/bin
+# [X] Only manage a defined subset of the utilities in this folder
+# [X] Remove '.sh' from shell script endings
+# [X] Also pass in the occasional binary with no '.sh'
+# [X] Allow subfolders for organization
+# [ ] Take config.json into account or manage with JSON
+# [ ] Unlink scripts (optional)
+# [ ] Run makefiles for binaries (optional)
+# [ ] Manage this script with this script
 
 # Todo
 # - Look into spaces in filenames
-# - JSON file to manage script pathes/names/etc
-# - Run makefiles for binaries
-
-#------------
-# Settings
-#------------
 
 #------------
 # Variables
@@ -31,12 +29,14 @@
 PROGRAM_NAME="utlity-manager.sh"
 VERSION="0.1.0-alpha"
 
-SCRIPTS_CURRENT_DIRECTORY="/home/ashton/.utilities/"
-SCRIPTS_DESTINATION_DIRECTORY="/usr/local/bin/"
+UTILITIES_CURRENT_DIRECTORY="/home/ashton/.utilities/"
+UTILITIES_DESTINATION_DIRECTORY="/usr/local/bin/"
 
-declare -a SCRIPT_PATHES=(
+declare -a UTILITY_PATHES=(
                              "clean-path.sh"
-                             "elecom-remap.sh"
+                             "elecom/elecom-remap.sh"
+                             "elecom/elecom-reset.sh"
+                             "elecom/elecom-usb-reset.sh"
                              "terminal-test/magicstring.sh"
                              "terminal-test/truecolor.sh"
                              "tmux/tmux-default.sh"
@@ -97,10 +97,6 @@ if [ "$argument_count" = 0 ]; then
 fi
 
 #------------
-# Functions
-#------------
-
-#------------
 # Script
 #------------
 
@@ -122,12 +118,12 @@ fi
 
 # Create symbolic links
 if [ "$action_link_scripts" = "true" ]; then
-	for entry in "${SCRIPT_PATHES[@]}"; do
-		if [ -e "$SCRIPTS_CURRENT_DIRECTORY$entry" ]; then
+	for entry in "${UTILITY_PATHES[@]}"; do
+		if [ -e "$UTILITIES_CURRENT_DIRECTORY$entry" ]; then
 			new_script_name=$(basename --suffix=.sh $entry)
-			sudo ln -sf "$SCRIPTS_CURRENT_DIRECTORY$entry" "$SCRIPTS_DESTINATION_DIRECTORY$new_script_name"
+			sudo ln -sf "$UTILITIES_CURRENT_DIRECTORY$entry" "$UTILITIES_DESTINATION_DIRECTORY$new_script_name"
 		else
-			echo "$SCRIPTS_CURRENT_DIRECTORY$entry not found."
+			echo "$UTILITIES_CURRENT_DIRECTORY$entry not found."
 		fi
 	done
 fi
@@ -135,5 +131,4 @@ fi
 # Successful exit
 
 exit 0
-
 

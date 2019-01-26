@@ -47,12 +47,12 @@ while [[ $# -gt 0 ]]; do
 			action_version=true
 			shift
 		;;
-		-v|--verbose)
-			option_verbose=true
-			shift
-		;;
 		-q|--quiet)
 			option_quiet=true
+			shift
+		;;
+		-v|--verbose)
+			option_verbose=true
 			shift
 		;;
 		*)
@@ -69,18 +69,41 @@ if [ "$argument_count" = 0 ]; then
 	action_help=true
 fi
 
+# Verbose takes precedence over quiet
+if [ "$option_verbose" = "true" ]; then
+	option_quiet=false
+fi
+
+#------------
+# Functions
+#------------
+
+echo_quiet()
+{
+	if [ "$option_quiet" != true ]; then
+		echo "$1"
+	fi
+}
+
+echo_verbose()
+{
+	if [ "$option_verbose" = true ]; then
+		echo "$1"
+	fi
+}
+
 #------------
 # Script
 #------------
 
 # Print usage/help information
 if [ "$action_help" = "true" ]; then
-	echo -e "\e[1mUsage\e[0m:"
+	echo -e "\e[1mUSAGE\e[0m:"
 	echo -e "    $PROGRAM_NAME (help | -h | --help)"
 	echo -e "    $PROGRAM_NAME (version | --version)"
-	echo -e "\n\e[1mOptions\e[0m:"
-	echo -e "    -v --verbose     Verbose output"
+	echo -e "\n\e[1mOPTIONS\e[0m:"
 	echo -e "    -q --quiet       Quiet ouput"
+	echo -e "    -v --verbose     Verbose output"
 fi
 
 # Print version information
