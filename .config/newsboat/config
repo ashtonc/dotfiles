@@ -1,0 +1,6 @@
+urls-source "ttrss"
+ttrss-url "https://rss.ashtonc.ca"
+ttrss-login "ashton"
+ttrss-passwordfile "~/.config/newsboat/ttrss-password"
+ttrss-flag-star "x"
+

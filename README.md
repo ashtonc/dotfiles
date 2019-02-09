@@ -101,5 +101,5 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 - see if xresources is useful for anything with my setup
 - improve folder structure in home directory
 - better booksmarks management (keep in a git repo)
-- newsboat?
+- script emulating [cookie](https://github.com/bbugyi200/cookie) but with more custom templates like [this](https://www.reddit.com/r/devops/comments/ak73ar/i_wrote_a_bash_script_to_easily_make_bash_script/)
 
