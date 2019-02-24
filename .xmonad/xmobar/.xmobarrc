@@ -49,10 +49,10 @@ Config {
                         \{\
                         \%mymusic%\
                         \%myupdates%\
-                        \<action=pulseaudio-ctl mute> %myvolume% </action>\
-                        \<fc=#595D64>|</fc><action=~/.xmonad/xmobar/scripts/cycle-brightness.sh> %mybrightness% </action>\
+                        \<action=`pulseaudio-ctl mute`> %myvolume% </action>\
+                        \<fc=#595D64>|</fc><action=`~/.xmonad/xmobar/scripts/cycle-brightness.sh`> %mybrightness% </action>\
                         \<fc=#595D64>|</fc> %mywifi% \
                         \%mybluetooth%\
                         \<fc=#595D64>|</fc> %mybattery%\
-                        \ "
+                        \<fc=#595D64>|</fc><action=`rofi -show run`> <fn=2></fn></action> "
 }

@@ -41,7 +41,7 @@ declare -a UTILITY_PATHES=(
                              "terminal-test/truecolor.sh"
                              "tmux/tmux-default.sh"
                              "usbreset/usbreset"
-                         )
+                          )
 
 #------------
 # Arguments

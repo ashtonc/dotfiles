@@ -25,7 +25,7 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 	- alacritty
 	- tmux
 	- zsh
-- editor
+- editors
 	- vim
 	- emacs
 - media
@@ -35,7 +35,7 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 	- gpmdp
 - files
 	- ranger
-- program dispatch
+- dispatch
 	- rofi
 	- rofi-emoji
 	- rofi-calc
@@ -49,6 +49,7 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 	- fullscreen content for Tall stays inside the box
 	- xmobar weather location change script
 	- xmonad scratchpad? (maybe)
+	- xmobar hide/show ghz
 	- resize borders with the mouse
 	- further fade unfocused floating windows
 	- might be nice to switch Tall to another layout
@@ -64,8 +65,8 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 - rofi
 	- wifi menu
 	- power menu
-	- menus on click for xmobar
-	- search google/amazon/wikipedia on unfamiliar terms
+	- menus on click for xmobar (wip)
+	- search google/amazon/wikipedia
 - scripts
 	- script so that i can charge my battery to 100% once
 	- color scheme script to prevent duplicate entries
@@ -73,7 +74,7 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 - design
 	- vim color scheme fix
 	- wallpaper? maybe
-	- zsh prompt git repo integration
+	- zsh prompt git integration
 	- minor xterm config (backup for alacritty)
 	- compton config
 - config
@@ -95,6 +96,7 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 	- disable/enable dunst via hotkey
 	- music
 	- email?
+	- rss
 - buy pragmatapro and switch to that
 - better org mode integrations
 - learn to use ranger
@@ -102,4 +104,5 @@ This is my dotfiles repository. It is set up similarly to the comment and articl
 - improve folder structure in home directory
 - better booksmarks management (keep in a git repo)
 - script emulating [cookie](https://github.com/bbugyi200/cookie) but with more custom templates like [this](https://www.reddit.com/r/devops/comments/ak73ar/i_wrote_a_bash_script_to_easily_make_bash_script/)
+- include more rules in the stylelintrc file
 

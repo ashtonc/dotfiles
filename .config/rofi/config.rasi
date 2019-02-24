@@ -1,6 +1,6 @@
 
 configuration {
-	modi: "run,window,emoji,calc";
+	modi: "run,window,calc";
 	matching: "normal";
 	sort: true;
 	scroll-method: 1;
