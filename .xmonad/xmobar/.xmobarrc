@@ -53,7 +53,6 @@ Config {
                         \<fc=#595D64>|</fc><action=~/.xmonad/xmobar/scripts/cycle-brightness.sh> %mybrightness% </action>\
                         \<fc=#595D64>|</fc> %mywifi% \
                         \%mybluetooth%\
-                        \<fc=#595D64>|</fc> %CYYC% \
                         \<fc=#595D64>|</fc> %mybattery%\
                         \ "
 }
