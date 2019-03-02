@@ -1,10 +1,10 @@
 #!/bin/bash
 
-showwifi="true"
-showwifissid="true"
-showwififrequency="true"
-showwifiupload="false"
-showwifidownload="false"
+showwifi=$(get-config '.xmobar["show-wifi"]')
+showwifissid=$(get-config '.xmobar["show-wifi-ssid"]')
+showwififrequency=$(get-config '.xmobar["show-wifi-frequency"]')
+showwifiupload=$(get-config '.xmobar["show-wifi-upload"]')
+showwifidownload=$(get-config '.xmobar["show-wifi-download"]')
 
 iconwifioff="<fn=2></fn>"
 iconwifinil="<fn=2></fn>"

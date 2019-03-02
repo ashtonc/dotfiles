@@ -1,8 +1,8 @@
 #!/bin/bash
 
-showvolume="true"
-showvolumeamount="true"
-showvolumestyle="percent"
+showvolume=$(get-config '.xmobar["show-volume"]')
+showvolumeamount=$(get-config '.xmobar["show-volume-amount"]')
+showvolumestyle=$(get-config '.xmobar["show-volume-style"]')
 
 xmobarspacer=""
 iconmute="<fn=2></fn>"

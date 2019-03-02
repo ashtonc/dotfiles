@@ -5,13 +5,13 @@
 #Vancouver: https://weather.gc.ca/wxlink/site_js/s0000141_e.js
 #Script: https://weather.gc.ca/wxlink/js/wxlink.js
 
-WEATHER_URL="https://weather.gc.ca/wxlink/site_js/s0000047_e.js"
-SUN_TIME_START=9
-SUN_TIME_END=4
-AMBIG_TIME_START=5
-AMBIG_TIME_END=8
-TEMPERATURE_HOT_THRESHOLD=20
-TEMPERATURE_COLD_THRESHOLD=0
+WEATHER_URL=$(get-config '.xmobar["weather-url"]')
+SUN_TIME_START=$(get-config '.xmobar["weather-sun-start-time"]')
+SUN_TIME_END=$(get-config '.xmobar["weather-sun-end-time"]')
+AMBIG_TIME_START=$(get-config '.xmobar["weather-ambiguous-start-time"]')
+AMBIG_TIME_END=$(get-config '.xmobar["weather-ambiguous-end-time"]')
+TEMPERATURE_HOT_THRESHOLD=$(get-config '.xmobar["weather-hot-threshold"]')
+TEMPERATURE_COLD_THRESHOLD=$(get-config '.xmobar["weather-cold-threshold"]')
 
 city_name="N/A"
 province_name="N/A"

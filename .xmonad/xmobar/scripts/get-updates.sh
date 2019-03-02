@@ -1,7 +1,7 @@
 #!/bin/bash
 
-showupdates="true"
-showupdatescount="true"
+showupdates=$(get-config '.xmobar["show-updates"]')
+showupdatescount=$(get-config '.xmobar["show-updates-count"]')
 
 xmobarspacer="<fc=#595D64>|</fc>"
 iconupdates="<fn=2></fn>"

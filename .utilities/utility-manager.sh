@@ -37,6 +37,7 @@ declare -a UTILITY_PATHES=(
                              "elecom/elecom-remap.sh"
                              "elecom/elecom-reset.sh"
                              "elecom/elecom-usb-reset.sh"
+							 "get-config.sh"
                              "terminal-test/magicstring.sh"
                              "terminal-test/truecolor.sh"
                              "tmux/tmux-default.sh"

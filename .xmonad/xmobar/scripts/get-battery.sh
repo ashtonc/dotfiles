@@ -1,8 +1,9 @@
 #!/bin/bash
 
-showbattery="true"
-showbatterypercentage="true"
-showbatterywatts="true"
+showbattery=$(get-config '.xmobar["show-battery"]')
+showbatteryicon=$(get-config '.xmobar["show-battery-icon"]')
+showbatterypercentage=$(get-config '.xmobar["show-battery-percentage"]')
+showbatterywatts=$(get-config '.xmobar["show-battery-watts"]')
 
 iconcharging="<fn=2></fn>"
 iconbatterynil="<fn=2></fn>"
@@ -39,20 +40,44 @@ if [ "$showbattery" = "true" ]; then
 	red="#E06C75"
 
 	if [ "$charging" = "Charging" ]; then
-		echo "<fn=2></fn> <fc=$green>$percentage</fc>%"
+		icon=""
+		color_prefix="<fc=$green>"
 	else
 		if [ "$percentage" -ge 0 -a "$percentage" -le 20 ]; then
-			echo "<fn=2></fn> <fc=$red>$percentage</fc>% (${powerdraw}W)"
+			icon=""
+			color_prefix="<fc=$red>"
 		elif [ "$percentage" -ge 21 -a "$percentage" -le 30 ]; then
-			echo "<fn=2></fn> <fc=$red>$percentage</fc>% (${powerdraw}W)"
+			icon=""
+			color_prefix="<fc=$red>"
 		elif [ "$percentage" -ge 31 -a "$percentage" -le 50 ]; then
-			echo "<fn=2></fn> <fc=$orange>$percentage</fc>% (${powerdraw}W)"
+			icon=""
+			color_prefix="<fc=$orange>"
 		elif [ "$percentage" -ge 51 -a "$percentage" -le 70 ]; then
-			echo "<fn=2></fn> <fc=$orange>$percentage</fc>% (${powerdraw}W)"
+			icon=""
+			color_prefix="<fc=$orange>"
 		else
-			echo "<fn=2></fn> <fc=$green>$percentage</fc>% (${powerdraw}W)"
+			icon=""
+			color_prefix="<fc=$green>"
 		fi
 	fi
+
+	icon_prefix="<fn=2>"
+	icon_suffix="</fn>"
+	color_suffix="</fc>"
+
+	if [ "$showbatteryicon" = "true" ]; then
+		icon="$icon_prefix$icon$icon_suffix"
+	fi
+
+	if [ "$showbatterypercentage" = "true" ]; then
+		percentage=" $color_prefix$percentage$color_suffix%"
+	fi
+
+	if [ "$showbatterywatts" = "true" ]; then
+		powerdraw=" (${powerdraw}W)"
+	fi
+
+	echo "$icon$percentage$powerdraw"
 fi
 
 exit 0
