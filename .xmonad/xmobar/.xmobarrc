@@ -28,13 +28,8 @@ Config {
                         , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/get-bluetooth.sh"
                                                    ] "mybluetooth" 50
 
-                        , Run Weather  "CYYC"      [ "--template" , "<fn=2></fn> <tempC>℃"
-                                                   , "-L"         , "4"
-                                                   , "-H"         , "20"
-                                                   , "--normal"   , "#98C379"
-                                                   , "--high"     , "#E06C75"
-                                                   , "--low"      , "#61AFEF"
-                                                   ] 18000
+                        , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/get-weather.sh"
+                                                   ] "myweather" 18000
 
                         , Run Com      "/bin/bash" [ "-c"         , "~/.xmonad/xmobar/scripts/get-battery.sh"
                                                    ] "mybattery" 100
@@ -53,6 +48,7 @@ Config {
                         \<fc=#595D64>|</fc><action=`~/.xmonad/xmobar/scripts/cycle-brightness.sh`> %mybrightness% </action>\
                         \<fc=#595D64>|</fc> %mywifi% \
                         \%mybluetooth%\
-                        \<fc=#595D64>|</fc> %mybattery%\
+                        \<fc=#595D64>|</fc><action=`~/.xmonad/xmobar/scripts/get-weather.sh \-\-url`> %myweather% </action>\
+                        \<fc=#595D64>|</fc> %mybattery% \
                         \<fc=#595D64>|</fc><action=`rofi -show run`> <fn=2></fn></action> "
 }
